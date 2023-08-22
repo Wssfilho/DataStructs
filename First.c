@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+//#include <unistd.h>
 //algorithm of ordenation
+//algoritimo de ordenacao
 void inserir(int n, int *);
 int *alocacao(int *n);
 void booble(int[], int n);
