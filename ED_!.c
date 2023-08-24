@@ -17,7 +17,6 @@ int main(void)
     booble(a_tleta);
     imprimir(a_tleta);
 }
-
 void inserir(Atleta *a)
 {
     for (int i = 0; i < n; i++)
