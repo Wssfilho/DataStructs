@@ -6,7 +6,7 @@
 void inserir(int n, int *);
 int *alocacao(int *n);
 void booble(int[], int n);
-void troca(int *, int *);
+void troca(int *, int *);  
 void imprimir(int *, const int);
 int main(void)
 {
