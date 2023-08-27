@@ -5,7 +5,6 @@ typedef struct
 {
     char nome[40];
 } Indexs;
-
 Indexs *alocar(int *);
 void menu();
 void inserir(Indexs *, const int);
@@ -120,6 +119,7 @@ void menu()
     printf("BEM VINDO AO SYSTEMA: \n");
     printf("1. Inserir\n");
     printf("2. mostrar\n");
+    printf("3. excluir nome\n");
     printf("0. Sair\n");
 }
 
