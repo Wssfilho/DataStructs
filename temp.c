@@ -12,8 +12,10 @@ void inserir(Indexs *, const int);
 void gravar(Indexs *, const int);
 Indexs *realocar(Indexs *temp, int n);
 void mostrarDoArquivo();
+void removerDoArquivo(char *nome);
 int main(void)
 {
+    char nome[40];
     int n;
     int op;
     Indexs *a;
@@ -31,38 +33,77 @@ int main(void)
         case 2:
             mostrarDoArquivo();
             break;
+        case 3:
+            printf("Insira o nome para remover: ");
+            fflush(stdin);
+            gets(nome);
+            fflush(stdin);
+            removerDoArquivo(nome);
+            break;
         default:
             break;
         }
     } while (op != 0);
     free(a);
 }
+void removerDoArquivo(char *nome)
+{
+    FILE *fp, *fpTemp;
+    Indexs temp;
+    int encontrou = 0;
+
+    if ((fp = fopen("index.dat", "rb")) == NULL)
+    {
+        printf("Erro ao abrir o arquivo.\n");
+        exit(-1);
+    }
+
+    fpTemp = tmpfile();
+
+    while (fread(&temp, sizeof(Indexs), 1, fp) == 1)
+    {
+        if (strcmp(temp.nome, nome) != 0)
+        {
+            fwrite(&temp, sizeof(Indexs), 1, fpTemp);
+        }
+        else
+        {
+            encontrou = 1;
+        }
+    }
+
+    if (!encontrou)
+    {
+        printf("Nome não encontrado.\n");
+    }
+
+    rewind(fpTemp);
+    fp = freopen("index.dat", "wb", fp);
+
+    while (fread(&temp, sizeof(Indexs), 1, fpTemp) == 1)
+    {
+        fwrite(&temp, sizeof(Indexs), 1, fp);
+    }
+
+    fclose(fp);
+}
+
 void mostrarDoArquivo()
 {
     FILE *fp;
-    int n;
-    Indexs *temp;
-
+    // int n;
+    Indexs temp;
+    system("clear || cls");
     if ((fp = fopen("index.dat", "rb")) == NULL)
     {
         printf("Erro ao abrir o arquivo");
         exit(-1);
     }
-
-    fread(&n, sizeof(int), 1, fp);
-    temp = malloc(n * sizeof(Indexs));
-    if (temp == NULL)
-        exit(-1);
-
-    fread(temp, sizeof(Indexs), n, fp);
-    fclose(fp);
-
-    for (int i = 0; i < n; i++)
+    while (fread(&temp, sizeof(Indexs), 1, fp) == 1)
     {
-        printf("Nome: %s\n", temp[i].nome);
+        printf("%s\n", temp.nome);
     }
-
-    free(temp);
+    fclose(fp);
 }
 
 Indexs *realocar(Indexs *temp, int n)
@@ -85,12 +126,12 @@ void menu()
 void gravar(Indexs *temp, const int n)
 {
     FILE *fp;
-    if ((fp = fopen("index.dat", "ab")) == NULL)
+    if ((fp = fopen("index.dat", "ab+")) == NULL)
     {
         printf("Conflito de arquivo");
         exit(-1);
     }
-    fwrite(&n, sizeof(int), 1, fp);
+    // fwrite(&n, sizeof(int), 1, fp);
     fwrite(temp, sizeof(Indexs), n, fp);
     fclose(fp);
 }
