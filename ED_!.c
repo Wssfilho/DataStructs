@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define n 3 //define para controlar a quantidade de usuario
 /* ENUNCIADO
 Crie e ordene (em ordem crescente) um vetor de atletas. Para cada atleta, você deve guardar as seguintes informações: nome, numero de medalhas de ouro, numero de medalhas de prata e numero de medalhas de bronze. A ordenação deve respeitar a seguinte regra: menor número de medalhas de ouro, em caso de empate, menor numero de medalhas de prata, se ainda houver empate, menor número de medalhas de bronze. Se ainda houver empate, escolher qualquer ordem. 
 
@@ -20,20 +19,24 @@ typedef struct //declaração de uma estrutura que tem os campos nome e numero d
     int num_ouro, num_prata, num_bronze;
 
 } Atleta;
-void inserir(Atleta *); //funcao para pegar os dados do usuario
-void booble(Atleta *); //funcao para ordenar de acordo com o enunciado
-void imprimir(Atleta *vector); //funcao para mostrar na tela o nome depois de ordenado
+void inserir(Atleta *, const int); //funcao para pegar os dados do usuario
+void booble(Atleta *, const int); //funcao para ordenar de acordo com o enunciado
+void imprimir(Atleta *vector, const int); //funcao para mostrar na tela o nome depois de ordenado
 int main(void)
 {
+    int n; //para controlar a quantidade de usuario
+    printf("Insira o numero de jogadores: ");
+    scanf("%d", &n);
     Atleta a_tleta[n]; //variavle do tipo struct Atleta
-    inserir(a_tleta); //chamada de funcoes
-    booble(a_tleta);
-    imprimir(a_tleta);
+    inserir(a_tleta, n); //chamada de funcoes
+    booble(a_tleta, n);
+    imprimir(a_tleta, n);
 }
-void inserir(Atleta *a) //funcao do tipo void, inserir, que recebe um ponteiro vetor do tipo estrutura atleta
+void inserir(Atleta *a, const int n) //funcao do tipo void, inserir, que recebe um ponteiro vetor do tipo estrutura atleta
 {
     for (int i = 0; i < n; i++) //laco para receber os dados
     {
+        fflush(stdin);
         printf("Insira o nome do atleta: ");
         scanf("%[^\n]s%*c", a[i].nome);
         printf("Insira a quantidade de medalhas de ouro: ");
@@ -45,7 +48,7 @@ void inserir(Atleta *a) //funcao do tipo void, inserir, que recebe um ponteiro v
         fflush(stdin);
     }
 }
-void booble(Atleta *vector) //funcao do tipo void, booble, de ordenação que tambem recebe um poteiro para estrutura
+void booble(Atleta *vector, const int n) //funcao do tipo void, booble, de ordenação que tambem recebe um poteiro para estrutura
 {
     int i, j; //variaveis
     for (i = 0; i < n - 1; i++)
@@ -63,7 +66,7 @@ void booble(Atleta *vector) //funcao do tipo void, booble, de ordenação que ta
         }
     }
 }
-void imprimir(Atleta *vector) //funcao do tipo void, imprimir, que recebe um ponteiro à estrutura e o que faz é imprimir na tela
+void imprimir(Atleta *vector, const int n) //funcao do tipo void, imprimir, que recebe um ponteiro à estrutura e o que faz é imprimir na tela
 {
     for (int i = 0; i < n; i++)
         printf("[%s]\n", vector[i].nome);
