@@ -1,43 +1,56 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define n 3
-typedef struct
+#define n 3 //define para controlar a quantidade de usuario
+/* ENUNCIADO
+Crie e ordene (em ordem crescente) um vetor de atletas. Para cada atleta, você deve guardar as seguintes informações: nome, numero de medalhas de ouro, numero de medalhas de prata e numero de medalhas de bronze. A ordenação deve respeitar a seguinte regra: menor número de medalhas de ouro, em caso de empate, menor numero de medalhas de prata, se ainda houver empate, menor número de medalhas de bronze. Se ainda houver empate, escolher qualquer ordem. 
+
+Você deverá usar um vetor de estruturas para essa tarefa. E deverá utilizar o algoritmo de bubble sort. Claro que terá que fazer adaptações a ele. 
+Obs: não é necessário usar alocação dinâmica
+
+A estrutura é a seguinte:
+struct Atleta {
+    char nome[100];
+    int n_ouro, n_prata, n_bronze;
+};
+*/
+
+typedef struct //declaração de uma estrutura que tem os campos nome e numero de medalhas;
 {
     char nome[30];
     int num_ouro, num_prata, num_bronze;
 
 } Atleta;
-void inserir(Atleta *);
-void booble(Atleta *);
-void imprimir(Atleta *vector);
+void inserir(Atleta *); //funcao para pegar os dados do usuario
+void booble(Atleta *); //funcao para ordenar de acordo com o enunciado
+void imprimir(Atleta *vector); //funcao para mostrar na tela o nome depois de ordenado
 int main(void)
 {
-    Atleta a_tleta[n];
-    inserir(a_tleta);
+    Atleta a_tleta[n]; //variavle do tipo struct Atleta
+    inserir(a_tleta); //chamada de funcoes
     booble(a_tleta);
     imprimir(a_tleta);
 }
-void inserir(Atleta *a)
+void inserir(Atleta *a) //funcao do tipo void, inserir, que recebe um ponteiro vetor do tipo estrutura atleta
 {
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++) //laco para receber os dados
     {
         printf("Insira o nome do atleta: ");
         scanf("%[^\n]s%*c", a[i].nome);
         printf("Insira a quantidade de medalhas de ouro: ");
         scanf("%d", &a[i].num_ouro);
-        printf("Insira a quantidade de medalhas de prata: ");
+        printf("Insira a quantidade de medalhas de prata: "); //recebendo os dados
         scanf("%d", &a[i].num_prata);
         printf("Insira a quantidade de medalhas de bronze: ");
         scanf("%d", &a[i].num_bronze);
         fflush(stdin);
     }
 }
-void booble(Atleta *vector)
+void booble(Atleta *vector) //funcao do tipo void, booble, de ordenação que tambem recebe um poteiro para estrutura
 {
-    int i, j;
+    int i, j; //variaveis
     for (i = 0; i < n - 1; i++)
     {
-        for (j = 0; j < n - 1 - i; j++)
+        for (j = 0; j < n - 1 - i; j++) //algoritimo de ordenação
         {
             if (vector[j].num_ouro > vector[j + 1].num_ouro ||
                 (vector[j].num_ouro == vector[j + 1].num_ouro && vector[j].num_prata > vector[j + 1].num_prata) ||
@@ -50,7 +63,7 @@ void booble(Atleta *vector)
         }
     }
 }
-void imprimir(Atleta *vector)
+void imprimir(Atleta *vector) //funcao do tipo void, imprimir, que recebe um ponteiro à estrutura e o que faz é imprimir na tela
 {
     for (int i = 0; i < n; i++)
         printf("[%s]\n", vector[i].nome);
