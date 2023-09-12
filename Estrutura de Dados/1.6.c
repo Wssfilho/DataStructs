@@ -4,6 +4,5 @@
 
 int main(void)
 {
-    printf("Fazer");
-    printf("Ola mundo");
+    
 }
