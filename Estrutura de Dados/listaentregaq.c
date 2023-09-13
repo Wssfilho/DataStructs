@@ -2,7 +2,13 @@
 #include <stdlib.h>
 #include <string.h>
 #define STACKSIZE 26
+/*Data a sequência de trens da entrada e a sequência de operações. Execute as operações e
+mostre o estado final dos vagões do lado direito.
+A entrada tem no máximo 26 vagões.
 
+A entrada consiste de 3 linhas. Na primeira linha o número de vagões na entrada. Na segunda
+linha, a sequência dos vagões. Na terceira linha, as operações realizadas.
+Informe erro se a operação não pode ser realizada!*/
 typedef struct //declaracao da estrutura da pilha
 {
     int top;
