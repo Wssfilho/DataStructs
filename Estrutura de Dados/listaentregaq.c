@@ -3,36 +3,38 @@
 #include <string.h>
 #define STACKSIZE 26
 
-struct stack
+typedef struct 
 {
     int top;
     char vagoes[STACKSIZE];
-};
+}Stack;
 
 // verifica se pilha está vazia
-int empty(struct stack *ps);
+int empty(Stack *ps);
 // remove e retorna item do topo da pilha;
-int pop(struct stack *ps);
+int pop(Stack *ps);
 // insere intem x no topo da pilha
-void push(struct stack *ps, int x);
-
+void push(Stack *ps, int x);
+char *alocar(int n);
 int main(void)
 {
+    int n;
     char operacoes[STACKSIZE];
-    struct stack trem_esq, trem_dir;
+    Stack trem_esq, trem_dir;
     trem_dir.top = -1;
     trem_esq.top = -1;
-    char vagoes[STACKSIZE];
-    printf("Insira os vagoes: ");
+    printf("Insira o tamanho do vagao: ");
+    scanf("%d", &n);
     fflush(stdin);
-    scanf("%s", vagoes);
+    char *vagoes = alocar(n);
+    printf("Insira os vagoes: ");
+    fgets(vagoes, n, stdin);
     fflush(stdin);
     printf("Insira as operacoes: ");
-    scanf("%s", operacoes);
+    fgets(operacoes, STACKSIZE, stdin);
     fflush(stdin);
-    // printf("%s", vagoes);
-    unsigned int i;
-    int j = 0;
+    
+    int i, j = 0;
     for (i = 0; operacoes[i] != '\0'; i++)
     {
         if (operacoes[i] == 'E')
@@ -43,27 +45,33 @@ int main(void)
         else if (operacoes[i] == 'D')
         {
             push(&trem_dir, pop(&trem_esq));
-
         }
     }
-    // for (int i = trem_dir.top; i >= 0; i--)
-    // {
-    //     printf("%c", trem_dir.vagoes[i]);
-    // }
-    printf("%s", trem_dir.vagoes);
     printf("\n");
-
+    for (int i = 0; i <= trem_dir.top; i++)
+    {
+        printf("%c ", trem_dir.vagoes[i]);
+    }
+    free(vagoes);
     return 0;
 }
+char *alocar(int n)
+{
+    char *temp;
+    temp = malloc(n * sizeof(char));
+    if (temp == NULL)
+        exit(-1);
 
-int empty(struct stack *ps)
+    return temp;
+}
+int empty(Stack *ps)
 {
     if (ps->top == -1)
         return 1;
     return 0;
 }
 
-int pop(struct stack *ps)
+int pop(Stack *ps)
 {
     int aux;
     if (empty(ps))
@@ -77,7 +85,7 @@ int pop(struct stack *ps)
     return aux;
 }
 
-void push(struct stack *ps, int x)
+void push(Stack *ps, int x)
 {
     if (ps->top == STACKSIZE - 1)
     {
