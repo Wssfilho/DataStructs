@@ -24,11 +24,10 @@ int main(void)
     trem_esq.top = -1;
     char vagoes[STACKSIZE];
     printf("Insira os vagoes: ");
-    fflush(stdin);
-    scanf("%s", vagoes);
+    fgets(vagoes, STACKSIZE, stdin);
     fflush(stdin);
     printf("Insira as operacoes: ");
-    scanf("%s", operacoes);
+    fgets(operacoes, STACKSIZE, stdin);
     fflush(stdin);
     // printf("%s", vagoes);
     unsigned int i;
