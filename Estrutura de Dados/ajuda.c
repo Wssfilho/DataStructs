@@ -13,7 +13,7 @@ int empty(Stack *ps); //funcao que verifica se a pilha esta vazia
 int pop(Stack *ps);//remove e retorna item do topo da pilha;
 void push(Stack *ps, int x); //insere o item x no topo da pilha
 char *alocar(int n); //funcao de alocacao de vetor
-void principal(char operacoes[], int n, char vagoes[]); //funcao que execulta o movimento dos itens dos vagoes
+void principal(char *operacoes, int n, char vagoes[]); //funcao que execulta o movimento dos itens dos vagoes
 int main(void) //funcao main
 {
     int n;
@@ -39,7 +39,7 @@ int main(void) //funcao main
 
     return 0;
 }
-void principal(char operacoes[], int n, char vagoes[])
+void principal(char *operacoes, int n, char vagoes[])
 {
     Stack trem_esq, trem_dir;
     trem_dir.top = -1; //declaracao das variaveis dos trilhos esquerda e direita
