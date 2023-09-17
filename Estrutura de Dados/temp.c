@@ -34,9 +34,7 @@ int main(void)
             break;
         case 3:
             printf("Insira o nome para remover: ");
-            fflush(stdin);
-            gets(nome);
-            fflush(stdin);
+            scanf("%*c%[^\n]s%*c", nome);
             removerDoArquivo(nome);
             break;
         default:
@@ -139,10 +137,8 @@ void inserir(Indexs *temp, const int n)
 {
     for (int i = 0; i < n; i++)
     {
-        fflush(stdin);
         printf("Insira o nome: ");
-        gets(temp[i].nome);
-        fflush(stdin);
+        scanf("%*c%[^\n]s%*c", temp[i].nome);
     }
 }
 Indexs *alocar(int *n)
