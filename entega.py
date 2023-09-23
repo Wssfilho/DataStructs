@@ -1,32 +1,27 @@
-class Fila:
-    def __init__(self):  # construtor do py
-        self.fila = []
-
-    def enfileirar(self, valor):
-        self.fila.append(valor)
-
-    def desenfileirar(self):
-        if len(self.fila) > 0:
-            max_valor = max(self.fila)
-            max_index = self.fila.index(max_valor)
-            self.fila.pop(max_index)
-        else:
-            print("A fila está vazia!")
-
-    def __str__(self):
-        return ' '.join(str(i) for i in self.fila)
+def enfileirar(valor):
+    fila.append(valor)
 
 
-fila = Fila()
+def desenfileirar():
+    if len(fila) > 0:
+        max_valor = max(fila)
+        max_index = fila.index(max_valor)
+        fila.pop(max_index)
+    else:
+        print("A fila está vazia!")
 
+
+def __str__(self):
+    return ' '.join(str(i) for i in fila)
+fila = []
 while True:
     operacao = input(
         "Digite a operação (E para enfileirar, D para desenfileirar, - para sair): ")
     if operacao == 'E':
         valor = int(input("Digite o valor a ser enfileirado: "))
-        fila.enfileirar(valor)
+        enfileirar(valor)
     elif operacao == 'D':
-        fila.desenfileirar()
+        desenfileirar()
     elif operacao == '-':
         break
     print(fila)
