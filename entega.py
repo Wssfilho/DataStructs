@@ -11,8 +11,6 @@ def desenfileirar():
         print("A fila está vazia!")
 
 
-def __str__(self):
-    return ' '.join(str(i) for i in fila)
 fila = []
 while True:
     operacao = input(
