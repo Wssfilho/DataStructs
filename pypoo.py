@@ -7,9 +7,9 @@ class Fila:
 
     def desenfileirar(self):
         if len(self.fila) > 0:
-            max_valor = max(self.fila)
-            max_index = self.fila.index(max_valor)
-            self.fila.pop(max_index)
+            maximo = max(self.fila)
+            maxind = self.fila.index(maximo)
+            self.fila.pop(maxind)
         else:
             print("A fila está vazia!")
 
@@ -21,7 +21,7 @@ fila = Fila()
 
 while True:
     operacao = input(
-        "Digite a operação (E para enfileirar, D para desenfileirar, - para sair): ")
+        "Digite a operação: ")
     if operacao == 'E':
         valor = int(input("Digite o valor a ser enfileirado: "))
         fila.enfileirar(valor)
