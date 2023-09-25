@@ -4,9 +4,9 @@ def enfileirar(valor):
 
 def desenfileirar():
     if len(fila) > 0:
-        max_valor = max(fila)
-        max_index = fila.index(max_valor)
-        fila.pop(max_index)
+        maximo = max(fila)
+        maximoind = fila.index(maximo)
+        fila.pop(maximoind)
     else:
         print("A fila está vazia!") #printa se a fila esta vazia
 
@@ -14,7 +14,7 @@ def desenfileirar():
 fila = [] #cria a fila
 while True: #enquanto for diferente de '-'
     operacao = input(
-        "Digite a operação (E para enfileirar, D para desenfileirar, - para sair): ")
+        "Digite a operação: ")
     if operacao == 'E':
         valor = int(input("Digite o valor a ser enfileirado: "))
         enfileirar(valor)
