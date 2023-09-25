@@ -13,17 +13,20 @@ class Fila:
         else:
             print("A fila está vazia!") #printa se a fila esta vazia
 
+    def __str__(self): 
+        return ' '.join(str(i) for i in self.fila) #
 
-fila = Fila() #cria a fila
 
-while True: #enquanto for diferente de '-'
+fila = Fila()
+
+while True:
     operacao = input(
         "Digite a operação (E para enfileirar, D para desenfileirar, - para sair): ")
-    if operacao == 'E': #se a operacao for igual a 'E'
+    if operacao == 'E': #verifica se a operacao é E
         valor = int(input("Digite o valor a ser enfileirado: "))
         fila.enfileirar(valor)
-    elif operacao == 'D': #se a operacao for igual a 'D'
+    elif operacao == 'D': #verifica se a operacao é D
         fila.desenfileirar()
-    elif operacao == '-':
-        break #para se for igual a '-'
+    elif operacao == '-': #verifica se a operacao é - e sai se for
+        break
     print(fila)
