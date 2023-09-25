@@ -10,7 +10,7 @@ def desenfileirar():
     else:
         print("A fila está vazia!") #printa se a fila esta vazia
 
-
+    
 fila = [] #cria a fila
 while True: #enquanto for diferente de '-'
     operacao = input(
