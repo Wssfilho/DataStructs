@@ -1,236 +1,120 @@
-/* Implementação base de uma lista simplesmente encadeada
-com números inteiros. Usem essa implementação para possíveis adaptações*/
-
 #include <stdio.h>
 #include <stdlib.h>
+#define n 10
 
 struct elemento
 {
     int valor;
     struct elemento *prox;
 };
-
-typedef struct elemento No;
+typedef struct elemento no;
 typedef struct elemento *Pno;
 
-/* Percorre e imprimir lista. Recebe o início da lista*/
-void mostrarLista(Pno inicio)
+
+void imprimir(Pno inicio) //SO IMPRIME
 {
     Pno atual;
     atual = inicio;
-    while (atual != NULL)
+    while(atual != NULL)
     {
-        printf("%d ", atual->valor);
+        printf("[%d] ", atual->valor);
         atual = atual->prox;
     }
 }
-
-// recebe dados(valor) e retorna um elemento com este dado
-Pno criaElemento(int valor)
+int vazia (Pno inicio)
 {
-    Pno novo;
-    novo = (Pno)malloc(sizeof(No));
-
-    novo->valor = valor;
-    novo->prox = NULL;
-
-    return novo;
-}
-
-/* verifica se é vazia. Se sim, retorna 1; se não, retorna 0. */
-int vazia(Pno inicio)
-{
-    if (inicio == NULL)
+    if (inicio==NULL)
         return 1;
     else
         return 0;
 }
 
-/*Percebam que aqui, nós iremos/podemos mudar os conteúdos dos ponteiros inicio e novo.
- Por isso precisamos passa-los como ponteiros.
- Portanto temos ponteiros de ponteiro: struct elemento ** inicio ou Pno *inicio */
-void insereInicio(Pno *inicio, Pno *novo)
+Pno criarElemento(int valor)
 {
-    if (vazia(*inicio))
-        *inicio = *novo;
+    Pno novo; //CRIACAO DE ESTRUTURA DO TIPO PONTEIRO COM NOME NOVO
+    novo = (Pno) malloc (sizeof(no)); //ALOCA (1) ESPACO NA MEMORIA E APONTA AUTOMATICAMENTE DO TAMANHO DA ESTRUTURA
+    if(novo == NULL)
+        exit(0); //VERIFICA SE ALOCOU CERTO
+    novo->valor = valor; //ENTAO ELE APONTA PARA O VALOR E COLOCA O VALOR
+    novo->prox = NULL; //ELE APONTA PARA O NULLO ESTANDO PREPARADO PARA ALOCAR OUTRO ESPACO
+    return novo; //RETORNA UM PONTEIRO PARA A NOVA ESTRUTUA QUE FOI ALOCADA
+}
+void inserirIn(Pno *inicio, Pno *novo)
+{
+    if(vazia(*inicio))
+    {
+        *inicio = *novo; //VERIFICA SE ESTA VAZIO, SE SIM ELE APONTA PARA UM NOVO
+    }
     else
     {
-        (*novo)->prox = *inicio;
+        (*novo)->prox = *inicio; //SE NAO ESTA VAZIO ELE CRIA UM ESPACO E JA APONTA PARA O INICIO
         *inicio = *novo;
     }
+
 }
-
-void insereFim(Pno *inicio, Pno *novo)
+void removerIn(Pno *inicio)
 {
-    Pno ultimo;
-
-    if (vazia(*inicio))
-        *inicio = *novo;
-    else
-    {
-        // percorre ate encontrar ultimo
-        ultimo = *inicio;
-        while (ultimo->prox != NULL)
-            ultimo = ultimo->prox;
-
-        ultimo->prox = *novo;
-    }
-}
-
-void insereOrdenado(Pno *inicio, Pno *novo)
-{
-    Pno anterior;
-
-    if (vazia(*inicio))
-        *inicio = *novo;
-    else
-    {
-        // anterior será último elemento menor que novo.
-        anterior = *inicio;
-        // se prox do anterior ainda é menor que novo, então anterior será o prox;
-        while ((anterior->prox != NULL) &&
-               (anterior->prox->valor < (*novo)->valor)) // para strings usar função strcmp
-            anterior = anterior->prox;
-
-        (*novo)->prox = anterior->prox;
-        anterior->prox = *novo;
-    }
-}
-
-void removeInicio(Pno *inicio)
-{
-    if (!vazia(*inicio))
+    if(!vazia(*inicio))
     {
         Pno alvo = *inicio;
         *inicio = alvo->prox;
         free(alvo);
     }
 }
-
-void removeFim(struct elemento **inicio)
-{
-    Pno alvo = *inicio;
-    Pno anterior = *inicio;
-
-    if (!vazia(*inicio))
-    {
-        while (alvo->prox != NULL)
-        {
-            anterior = alvo;
-            alvo = alvo->prox;
-        }
-        anterior->prox = NULL;
-        free(alvo);
-    }
-}
-
-// Precisamos encotrar o anterior ao alvo
-void removeAlvo(Pno *inicio, Pno *alvo)
-{
-    Pno anterior = *inicio;
-
-    if (!vazia(*inicio))
-    {
-        if (*inicio == *alvo)
-        { // se alvo é elemento do início
-            *inicio = (*inicio)->prox;
-            free(*alvo);
-        }
-        else
-        {
-            while (anterior->prox != *alvo)
-                anterior = anterior->prox;
-
-            anterior->prox = (*alvo)->prox;
-            free(*alvo);
-        }
-    }
-}
-
-// busca (retorna o endereço) o elemento que tem valor x
 Pno busca(Pno *inicio, int x)
 {
-    Pno alvo = *inicio;
-
-    while (alvo != NULL)
+    Pno alvo = *inicio; //O ALVO APONTA PARA O INICIO
+    while(alvo != NULL) //ENQUANTO O ALVO NAO FOR NULL, OU SEJA, ENQUANTO NAO ACABAR A LISTA!
     {
-        if (alvo->valor = x)
-            return alvo;
-        alvo = alvo->prox;
+        if(alvo->valor == x) //COMPARA SE CADA VALOR DE CADA ESTRUTURA EH IGUAL AO VALOR INDICADO
+            return alvo; //SE ACHAR JA RETORNA
+        alvo = alvo->prox; //SE NAO ACHAR ELE CONTINUA ANDANDO
     }
-    return alvo;
+    return alvo; //SE NAO TIVER O ELEMENTO ELE RETORNA A ESTRUTURA
+    //(PODEMOS FAZER UMA FUNCAO QUE MOSTRA SE ALVO == 1 POR EXEMPLO E MOSTRAR UMA MENSAGEM QUE O ELEMENTO NAO ESTA NA LISTA)
 }
+void insereFim (Pno *inicio, Pno *novo){
+	Pno ultimo;
 
-Pno concatenar(Pno *inicio1, Pno *inicio2)
-{
-    Pno ultimo = *inicio1;
+	if (vazia(*inicio))
+		*inicio = *novo;
+	else {
+		//percorre ate encontrar ultimo
+		ultimo = *inicio;
+		while (ultimo->prox != NULL)
+			ultimo = ultimo->prox;
 
-    while (ultimo->prox != NULL)
-    {
-        ultimo = ultimo->prox;
-    }
-    ultimo->prox = *inicio2;
-
-    return *inicio1;
+		ultimo->prox=*novo; //INSERE NO FIM
+	}
 }
-
-int main()
+//void removerFim();
+//void concatenar
+//void inserordenado
+//void removeoalvo
+int main(void)
 {
     Pno inicio = NULL;
-    Pno inicio1 = NULL;
-    Pno inicio2 = NULL;
     Pno novo, alvo;
+    for(int i = 0; i <= n; (i+=2)) //0 para par
+    {
+        novo = criarElemento(i);
+        //inserirIn(&inicio, &novo);
+        insereFim(&inicio, &novo);
 
-    // TRECHO PARA TESTAR CONCATENAÇÃO DE 2 LISTAS
-    novo = criaElemento(0);
-    insereInicio(&inicio1, &novo);
-    novo = criaElemento(1);
-    insereInicio(&inicio1, &novo);
-    novo = criaElemento(2);
-    insereInicio(&inicio1, &novo);
-    mostrarLista(inicio1);
-    printf("\n");
+    }
+   /* for(int i = 1; i <= n; (i+=2)) //1 para impar
+    {
+        novo = criarElemento(i);
+        //inserirIn(&inicio, &novo);
+        insereFim(&inicio, &novo);
 
-    novo = criaElemento(2);
-    insereInicio(&inicio2, &novo);
-    novo = criaElemento(3);
-    insereInicio(&inicio2, &novo);
-    novo = criaElemento(4);
-    insereInicio(&inicio2, &novo);
-    mostrarLista(inicio2);
+    }
+    */
 
-    printf("CONCATENAR\n");
-    concatenar(&inicio1, &inicio2);
-    mostrarLista(inicio1);
-
-    // TRECHO TESTES ALEATÓRIOS
-    novo = criaElemento(0);
-    insereInicio(&inicio, &novo);
-
-    novo = criaElemento(2);
-    insereFim(&inicio, &novo);
-
-    novo = criaElemento(1);
-    insereOrdenado(&inicio, &novo);
-
-    novo = criaElemento(1);
-    insereOrdenado(&inicio, &novo);
-
-    novo = criaElemento(1);
-    insereOrdenado(&inicio, &novo);
-
-    mostrarLista(inicio);
-
-    removeInicio(&inicio);
-
-    printf("\n");
-    mostrarLista(inicio);
-
-    alvo = busca(&inicio, 1);
-    removeAlvo(&inicio, &alvo);
-
-    printf("\n");
-    mostrarLista(inicio);
-
-    return 0;
+    imprimir(inicio);
+    removerIn(&inicio);
+    printf("\n\n\n\n");
+    imprimir(inicio);
+    alvo = busca(&inicio, 0); //SE FOR ZERO DA ERRO PQ O 0 JA FOI REMOVIDO NA FUNCAO ACIMA
+    printf("\n%d", alvo->valor);
 }
