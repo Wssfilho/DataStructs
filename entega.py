@@ -21,5 +21,5 @@ while True: #enquanto for diferente de '-'
     elif operacao == 'D': #se a operacao for igual a 'D'
         desenfileirar()
     elif operacao == '-': #se for igual a '-' sai
-        break 
+        break
     print(fila)
