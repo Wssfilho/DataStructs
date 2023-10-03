@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/wilso/Downloads/Estrutura de Dados",
-      "program": "c:/Users/wilso/Downloads/Estrutura de Dados/build/Debug/outDebug",
+      "cwd": "c:/Users/wilso/OneDrive/Documentos/GitHub/Estrutura-de-Dados/Listas Encadeadas",
+      "program": "c:/Users/wilso/OneDrive/Documentos/GitHub/Estrutura-de-Dados/Listas Encadeadas/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
