@@ -76,7 +76,7 @@ int main(void)
 {
     Pno inicio = NULL;
     Pno novo, aux, aux2;
-    int n, ent, a, b;
+    int n, ent, a;
     char entrada[40];
     aux = inicio;
     do
