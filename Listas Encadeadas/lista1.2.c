@@ -16,7 +16,7 @@ void imprimir(Pno inicio) // SO IMPRIME
     atual = inicio;
     while (atual != NULL)
     {
-        printf("[%c] ", atual->valor);
+        printf("[%d]\n ", atual->valor);
         atual = atual->prox;
     }
 }
@@ -28,7 +28,7 @@ int vazia(Pno inicio)
         return 0;
 }
 
-Pno criarElemento(char valor)
+Pno criarElemento(int valor) // char valor
 {
     Pno novo;                       // CRIACAO DE ESTRUTURA DO TIPO PONTEIRO COM NOME NOVO
     novo = (Pno)malloc(sizeof(no)); // ALOCA (1) ESPACO NA MEMORIA E APONTA AUTOMATICAMENTE DO TAMANHO DA ESTRUTURA
@@ -52,7 +52,7 @@ void inserirIn(Pno *inicio, Pno *novo)
 }
 void removerIn(Pno *inicio)
 {
-    if (!vazia(*inicio))
+    if (!vazia(*inicio)) //SE NAO TIVER VAZIO O ALVO APONTA PARA O INCIO, O INCICIO GUARDA O ALVO, ENTAO ELE LIBERA A POSICAO
     {
         Pno alvo = *inicio;
         *inicio = alvo->prox;
@@ -109,6 +109,7 @@ void removeAlvo(Pno *inicio, Pno *alvo)
         }
     }
 }
+
 void removeFim(struct elemento **inicio)
 {
     Pno alvo = *inicio;
@@ -126,7 +127,26 @@ void removeFim(struct elemento **inicio)
     }
 }
 // void concatenar
-// void inserordenado
+void insereOrdenado(Pno *inicio, Pno *novo)
+{
+    Pno anterior;
+
+    if (vazia(*inicio))
+        *inicio = *novo;
+    else
+    {
+        // anterior será último elemento menor que novo.
+        anterior = *inicio;
+        // se prox do anterior ainda é menor que novo, então anterior será o prox;
+        while ((anterior->prox != NULL) &&
+               (anterior->prox->valor < (*novo)->valor)) // para strings usar função strcmp
+            anterior = anterior->prox;
+
+        (*novo)->prox = anterior->prox;
+        anterior->prox = *novo;
+    }
+}
+
 int main(void)
 {
     Pno inicio = NULL;
@@ -149,5 +169,32 @@ int main(void)
     // imprimir(inicio);
     // removeFim(&inicio);
     // printf("\n");
+    // imprimir(inicio);
+
+    // //demonstracao de fila
+    // novo = criarElemento('A');
+    // insereFim(&inicio, &novo);
+    // novo = criarElemento('Z');
+    // insereFim(&inicio, &novo);
+    // novo = criarElemento('X');
+    // insereFim(&inicio, &novo);
+    // novo = criarElemento('B');
+    // insereFim(&inicio, &novo);
+    // novo = criarElemento('C');
+    // insereFim(&inicio, &novo);
+    // printf("\n");
+    // imprimir(inicio);
+    // removerIn(&inicio);
+    // printf("\n");
+    // imprimir(inicio);
+    // demosntracao de ordenacao
+    // novo = criarElemento(1);
+    // insereOrdenado(&inicio, &novo);
+    // novo = criarElemento(2);
+    // insereOrdenado(&inicio, &novo);
+    // novo = criarElemento(5);
+    // insereOrdenado(&inicio, &novo);
+    // novo = criarElemento(3);
+    // insereOrdenado(&inicio, &novo);
     // imprimir(inicio);
 }
