@@ -16,7 +16,7 @@ void imprimir(Pno inicio) // SO IMPRIME
     atual = inicio;
     while (atual != NULL)
     {
-        printf("[%d]\n ", atual->valor);
+        printf("[%c]\n ", atual->valor);
         atual = atual->prox;
     }
 }
@@ -28,7 +28,7 @@ int vazia(Pno inicio)
         return 0;
 }
 
-Pno criarElemento(int valor) // char valor
+Pno criarElemento(char valor) // char valor
 {
     Pno novo;                       // CRIACAO DE ESTRUTURA DO TIPO PONTEIRO COM NOME NOVO
     novo = (Pno)malloc(sizeof(no)); // ALOCA (1) ESPACO NA MEMORIA E APONTA AUTOMATICAMENTE DO TAMANHO DA ESTRUTURA

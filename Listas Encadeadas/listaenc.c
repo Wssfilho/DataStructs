@@ -14,7 +14,7 @@ void imprimir(Pno inicio) // SO IMPRIME
     atual = inicio;
     while (atual != NULL)
     {
-        printf("[%d]\n ", atual->valor);
+        printf("[%d]", atual->valor);
         atual = atual->prox;
     }
 }
