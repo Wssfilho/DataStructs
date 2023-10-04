@@ -55,8 +55,9 @@ void insereFim(Pno *inicio, Pno *novo)
     }
 }
 
-void removeFim(struct elemento **inicio)
+int removeFim(struct elemento **inicio)
 {
+    int a = 0;
     Pno alvo = *inicio;
     Pno anterior = *inicio;
 
@@ -67,18 +68,20 @@ void removeFim(struct elemento **inicio)
             anterior = alvo;
             alvo = alvo->prox;
         }
+        a = alvo->valor;
         anterior->prox = NULL;
         free(alvo);
     }
+    return a;
 }
 
 int main(void)
 {
     Pno inicio = NULL;
-    Pno novo, aux, aux2;
-    int n, ent, a;
+    Pno novo;
+    int n, ent, a, b;
     char entrada[40];
-    aux = inicio;
+
     do
     {
         scanf("%d", &n);
@@ -95,43 +98,22 @@ int main(void)
             }
             else if (strcmp(entrada, "ISUB") == 0)
             {
-                aux = inicio;
-                while (!(aux == NULL))
-                {
-
-                    a = aux->prox->prox->valor;
-                    printf("%d\n", a);
-                    removeFim(&inicio);
-                    a-=aux->prox->valor;
-                    printf("%d", a);
-                    removeFim(&inicio);
-                    aux2 = criarElemento(a);
-                    insereFim(&inicio, &aux2);
-                    imprimir(inicio);
-                    break;
-                }
+                a = removeFim(&inicio);
+                a -= removeFim(&inicio);
+                novo = criarElemento(a);
+                insereFim(&inicio, &novo);
             }
             else if (strcmp(entrada, "IMUL") == 0)
             {
-                aux = inicio;
-                while (!(aux == NULL))
-                {
-
-                    a = aux->prox->prox->valor;
-                    printf("%d\n", a);
-                    removeFim(&inicio);
-                    a*=aux->prox->valor;
-                    printf("%d", a);
-                    removeFim(&inicio);
-                    aux2 = criarElemento(a);
-                    insereFim(&inicio, &aux2);
-                    imprimir(inicio);
-                    break;
-
-                }
+                imprimir(inicio);
+                b = removeFim(&inicio);
+                b *= removeFim(&inicio);
+                printf("%d", b);
+                novo = criarElemento(b);
+                insereFim(&inicio, &novo);
+                imprimir(inicio);
             }
+            
         }
-        imprimir(inicio);
-
     } while (n != 0);
 }
