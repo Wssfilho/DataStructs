@@ -8,7 +8,7 @@ struct elemento
 };
 typedef struct elemento no;
 typedef struct elemento *Pno;
-
+int vazia(Pno);
 void imprimir(Pno inicio) // SO IMPRIME
 {
     Pno atual;
@@ -57,7 +57,7 @@ void insereFim(Pno *inicio, Pno *novo)
 
 int removeFim(struct elemento **inicio)
 {
-    int a = 0;
+    int a;
     Pno alvo = *inicio;
     Pno anterior = *inicio;
 
@@ -78,7 +78,7 @@ int removeFim(struct elemento **inicio)
 int main(void)
 {
     Pno inicio = NULL;
-    Pno novo;
+    Pno novo, aux;
     int n, ent, a, b;
     char entrada[40];
 
@@ -94,7 +94,6 @@ int main(void)
                 scanf("%d", &ent);
                 novo = criarElemento(ent);
                 insereFim(&inicio, &novo);
-                imprimir(inicio);
             }
             else if (strcmp(entrada, "ISUB") == 0)
             {
@@ -105,15 +104,12 @@ int main(void)
             }
             else if (strcmp(entrada, "IMUL") == 0)
             {
-                imprimir(inicio);
                 b = removeFim(&inicio);
                 b *= removeFim(&inicio);
-                printf("%d", b);
-                novo = criarElemento(b);
-                insereFim(&inicio, &novo);
-                imprimir(inicio);
+                aux = criarElemento(b);
+                //insereFim(&inicio, &aux);
             }
-            
         }
     } while (n != 0);
+    imprimir(inicio);
 }
