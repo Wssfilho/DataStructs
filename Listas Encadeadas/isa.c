@@ -85,15 +85,16 @@ int main(void)
     do
     {
         scanf("%d", &n);
-
         for (int i = 0; i < n; i++)
         {
             scanf("%s", entrada);
+            imprimir(inicio);
             if (strcmp(entrada, "BIPUSH") == 0)
             {
                 scanf("%d", &ent);
                 novo = criarElemento(ent);
                 insereFim(&inicio, &novo);
+                printf("\n");
             }
             else if (strcmp(entrada, "ISUB") == 0)
             {
@@ -101,13 +102,15 @@ int main(void)
                 a -= removeFim(&inicio);
                 novo = criarElemento(a);
                 insereFim(&inicio, &novo);
+                printf("\n");
             }
             else if (strcmp(entrada, "IMUL") == 0)
             {
                 b = removeFim(&inicio);
                 b *= removeFim(&inicio);
                 aux = criarElemento(b);
-                //insereFim(&inicio, &aux);
+                printf("\n");
+                insereFim(&inicio, &aux);
             }
         }
     } while (n != 0);

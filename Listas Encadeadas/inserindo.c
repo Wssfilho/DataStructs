@@ -31,6 +31,19 @@ void imprimir(Pno inicio) // SO IMPRIME
         atual = atual->prox;
     }
 }
+void liberar(Pno *inicio) // SO IMPRIME
+{
+    Pno atual, alvo;
+    atual = *inicio;
+    while (atual != NULL)
+    {
+        alvo=atual;
+        atual = atual->prox;
+        free(alvo);
+
+    }
+    *inicio=NULL;
+}
 int vazia(Pno inicio)
 {
     if (inicio == NULL)
@@ -94,8 +107,6 @@ int main(void)
     do
     {
         scanf("%d", &n);
-        if(n == 0)
-            return 0;
         for (int i = 0; i < n; i++)
         {
             scanf("%s", entrada);
@@ -113,8 +124,7 @@ int main(void)
             }
         }
         imprimir(inicio);
-        free(inicio);
+        liberar(&inicio);
     } while (n != 0);
-
-    scanf("%d", &n);
+ 
 }
