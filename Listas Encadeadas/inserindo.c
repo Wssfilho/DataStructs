@@ -92,6 +92,7 @@ int main(void)
     char entrada[40];
 
     scanf("%d", &n);
+    while(n != 0){
     for (int i = 0; i < n; i++)
     {
         scanf("%s", entrada);
@@ -108,5 +109,8 @@ int main(void)
             insereFim(&inicio, &novo);
         }
     }
-    imprimir(inicio);
+    imprimir(início);
+    scanf("%d", &n);
+    free(início);
+}
 }
