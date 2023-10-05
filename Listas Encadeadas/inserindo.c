@@ -110,8 +110,8 @@
          } 
      } 
      imprimir(inicio); 
-     scanf("%d", &n);
      free(inicio); 
+     scanf("%d", &n);
      
  } 
  }
