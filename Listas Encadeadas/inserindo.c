@@ -111,8 +111,7 @@
      } 
      imprimir(inicio); 
      scanf("%d", &n);
-     if(n != 0)
-        free(inicio); 
+     free(inicio); 
      
  } 
  }
