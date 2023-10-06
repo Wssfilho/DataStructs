@@ -13,7 +13,7 @@ void imprimir(Pno inicio) // SO IMPRIME
 {
     Pno atual;
     atual = inicio;
-    while (atual != NULL)
+    while (atual->prox != NULL)
     {
         printf("[%d]", atual->valor);
         atual = atual->prox;
@@ -88,7 +88,6 @@ int main(void)
         for (int i = 0; i < n; i++)
         {
             scanf("%s", entrada);
-            imprimir(inicio);
             if (strcmp(entrada, "BIPUSH") == 0)
             {
                 scanf("%d", &ent);
