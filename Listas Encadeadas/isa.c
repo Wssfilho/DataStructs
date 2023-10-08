@@ -13,9 +13,9 @@ void imprimir(Pno inicio) // SO IMPRIME
 {
     Pno atual;
     atual = inicio;
-    while (atual->prox != NULL)
+    while (atual != NULL)
     {
-        printf("[%d]", atual->valor);
+        printf("%d", atual->valor);
         atual = atual->prox;
     }
 }
@@ -69,6 +69,10 @@ int removeFim(struct elemento **inicio)
             alvo = alvo->prox;
         }
         a = alvo->valor;
+
+        if (alvo==*inicio)
+        *inicio=NULL;
+
         anterior->prox = NULL;
         free(alvo);
     }
@@ -79,7 +83,7 @@ int main(void)
 {
     Pno inicio = NULL;
     Pno novo, aux;
-    int n, ent, a, b;
+    int n, ent, a, b, c;
     char entrada[40];
 
     do
@@ -109,6 +113,13 @@ int main(void)
                 b *= removeFim(&inicio);
                 aux = criarElemento(b);
                 printf("\n");
+                insereFim(&inicio, &aux);
+            }
+            else if(strcmp(entrada, "IADD") == 0)
+            {
+                c = removeFim(&inicio);
+                c += removeFim(&inicio);
+                aux = criarElemento(c);
                 insereFim(&inicio, &aux);
             }
         }
