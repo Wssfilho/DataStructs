@@ -99,7 +99,7 @@ int main(void)
 {
     Pno inicio1 = NULL;
     Pno novo;
-    unsigned int i, n, a, b, teste, k;
+    unsigned int i, n, a, b = 0, teste, k;
     scanf("%d", &a);
     do
     {
