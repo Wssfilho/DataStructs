@@ -99,11 +99,11 @@ int main(void)
 {
     Pno inicio1 = NULL;
     Pno novo;
-    unsigned int i, n, a, b = 0, teste, k;
+    unsigned int i, n, a, b = 0, c = 0, teste, k;
     scanf("%d", &a);
     do
     {
-        scanf("%d %d", &n, &b);
+        scanf("%d %d", &n, &c);
         for (i = n; i != 0; i--)
         {
             novo = criaElemento(i);
@@ -117,7 +117,7 @@ int main(void)
             inicio1 = inicio1->prox;
             teste = inicio1->valor;
             inicio1 = inicio1->prox;
-            b++;
+            b+=c;
             k = removeFim(&inicio1);
         }
         printf("[%d], valor de k: [%d]", teste, k);
