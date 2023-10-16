@@ -85,21 +85,21 @@ int main(void)
 {
     Pno inicio = NULL;
     Pno novo;
-    int n, ent;
+    int n, ent; //variaveis
     char entrada[40];
     do
     {
         scanf("%d", &n);
-        for (int i = 0; i < n; i++)
+        for (int i = 0; i < n; i++) //enquanto ha operacao faca
         {
             scanf("%s", entrada);
-            if (strcmp(entrada, "P") == 0)
+            if (strcmp(entrada, "P") == 0) //se for P ele cria um novo e insere no inicio
             {
                 scanf("%d", &ent);
                 novo = criarElemento(ent);
                 inserirIn(&inicio, &novo);
             }
-            else if (strcmp(entrada, "U") == 0)
+            else if (strcmp(entrada, "U") == 0) //se for ultimo ele insere no ultimo
             {
                 scanf("%d", &ent);
                 novo = criarElemento(ent);
@@ -107,10 +107,10 @@ int main(void)
             }
             
         }
-        imprimir(inicio);
-        liberar(&inicio);
-        scanf("%d", &n);
-        
+        imprimir(inicio); //imprime cada lista
+        liberar(&inicio); //faz um free na lista para iniciar outra
+        scanf("%d", &n); //se n for igual a 0 sai do loop
+         
     } while (n != 0);
     return 0;
 }

@@ -55,7 +55,7 @@ void insereFim(Pno *inicio, Pno *novo)
     }
 }
 
-int removeFim(struct elemento **inicio)
+int removeFim(struct elemento **inicio) //agora, remove fim retorna um inteiro dps de ser removido
 {
     int a;
     Pno alvo = *inicio;
@@ -68,7 +68,7 @@ int removeFim(struct elemento **inicio)
             anterior = alvo;
             alvo = alvo->prox;
         }
-        a = alvo->valor;
+        a = alvo->valor; //quarta o inteiro
 
         if (alvo==*inicio)
         *inicio=NULL;
@@ -76,14 +76,14 @@ int removeFim(struct elemento **inicio)
         anterior->prox = NULL;
         free(alvo);
     }
-    return a;
+    return a; //retorna o inteiro
 }
 
 int main(void)
 {
     Pno inicio = NULL;
     Pno novo, aux;
-    int n, ent, a, b, c;
+    int n, ent, a; //variaveis
     char entrada[40];
 
     do
@@ -92,37 +92,37 @@ int main(void)
         for (int i = 0; i < n; i++)
         {
             scanf("%s", entrada);
-            if (strcmp(entrada, "BIPUSH") == 0)
+            if (strcmp(entrada, "BIPUSH") == 0) //se for BIPUSH cria o elemento e insere no fim da lista
             {
                 scanf("%d", &ent);
                 novo = criarElemento(ent);
                 insereFim(&inicio, &novo);
-                printf("\n");
+                //printf("\n");
             }
-            else if (strcmp(entrada, "ISUB") == 0)
+            else if (strcmp(entrada, "ISUB") == 0) //se for isub ele pega os dois ultimos da lista, sibtrai e poe o resultado no topo (idem para IMUL E IADD)
             {
                 a = removeFim(&inicio);
                 a -= removeFim(&inicio);
                 novo = criarElemento(a);
                 insereFim(&inicio, &novo);
-                printf("\n");
+                //printf("\n");
             }
             else if (strcmp(entrada, "IMUL") == 0)
             {
-                b = removeFim(&inicio);
-                b *= removeFim(&inicio);
-                aux = criarElemento(b);
-                printf("\n");
+                a = removeFim(&inicio);
+                a *= removeFim(&inicio);
+                aux = criarElemento(a);
+                //printf("\n");
                 insereFim(&inicio, &aux);
             }
             else if(strcmp(entrada, "IADD") == 0)
             {
-                c = removeFim(&inicio);
-                c += removeFim(&inicio);
-                aux = criarElemento(c);
+                a = removeFim(&inicio);
+                a += removeFim(&inicio);
+                aux = criarElemento(a);
                 insereFim(&inicio, &aux);
             }
         }
-    } while (n != 0);
-    imprimir(inicio);
+    } while (n != 0); //se n for 0 ele sai
+    imprimir(inicio); //imprime o inicio
 }
