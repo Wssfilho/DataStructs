@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/wilsonpc/Documentos/Estrutura-de-Dados",
-      "program": "/home/wilsonpc/Documentos/Estrutura-de-Dados/build/Debug/outDebug",
+      "cwd": "/home/wilsonpc/Documentos/Estrutura-de-Dados/Listas Encadeadas",
+      "program": "/home/wilsonpc/Documentos/Estrutura-de-Dados/Listas Encadeadas/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
