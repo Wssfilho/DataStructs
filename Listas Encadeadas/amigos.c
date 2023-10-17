@@ -55,15 +55,15 @@ Pno criarElemento(int valor)
 
 Pno criarLista(int valor)
 {
-    Pno a = criarElemento(1);
-    Pno b = a;
+    Pno inicio = criarElemento(1);
+    Pno aux = inicio;
     for (int i = 2; i <= valor; i++)
     {
-        b->prox = criarElemento(i);
-        b = b->prox;
+        aux->prox = criarElemento(i);
+        aux = aux->prox;
     }
-    b->prox = a;
-    return a;
+    aux->prox = inicio;
+    return inicio;
 }
 
 int Eliminacao(Pno inicio, int valor)
