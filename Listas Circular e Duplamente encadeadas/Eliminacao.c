@@ -13,20 +13,20 @@ typedef struct elemento *Pno; // Definindo 'Pno' como um sinônimo para o pontei
 // Protótipos das funções
 Pno criarLista(int);
 int retirar(Pno, int);
-void inserir(const int casos);
+void menu(const int casos);
 
 // Função principal
 int main(void)
 {
     int casos;
     scanf("%d", &casos); // Lê a quantidade de casos
-    inserir(casos);      // Chama a função 'inserir' passando a quantidade de casos
+    menu(casos);      // Chama a função 'inserir' passando a quantidade de casos
 
     return 0;
 }
 
 // Função que insere elementos na lista
-void inserir(const int casos)
+void menu(const int casos)
 {
     Pno lista;
     int amigos, lim, *vencedor;
