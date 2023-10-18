@@ -1,58 +1,66 @@
 #include <stdio.h>
 #include <stdlib.h>
+
+// Definição da estrutura de um elemento
 struct elemento
 {
-    int valor;
-    struct elemento *prox;
+    int valor;             // Valor do elemento
+    struct elemento *prox; // Ponteiro para o próximo elemento
 };
-typedef struct elemento no;
-typedef struct elemento *Pno;
+typedef struct elemento no;   // Definindo 'no' como um sinônimo para 'struct elemento'
+typedef struct elemento *Pno; // Definindo 'Pno' como um sinônimo para o ponteiro para 'struct elemento'
 
+// Protótipos das funções
 Pno criarLista(int);
 int Eliminacao(Pno, int);
 void inserir(const int casos);
+
+// Função principal
 int main(void)
 {
-    
     int casos;
-    scanf("%d", &casos);
-    inserir(casos);
-    
+    scanf("%d", &casos); // Lê a quantidade de casos
+    inserir(casos);      // Chama a função 'inserir' passando a quantidade de casos
+
     return 0;
 }
+
+// Função que insere elementos na lista
 void inserir(const int casos)
 {
     Pno lista;
-    int amigos, lim, *vencedor; 
-    vencedor = malloc(casos * sizeof(int));
-    if (vencedor == NULL)
+    int amigos, lim, *vencedor;
+    vencedor = malloc(casos * sizeof(int)); // Aloca memória para o vetor 'vencedor'
+    if (vencedor == NULL)                   // Verifica se a alocação foi bem sucedida
         exit(-1);
     for (int i = 0; i < casos; i++)
     {
-        scanf("%d", &amigos);
-        scanf("%d", &lim);
-        lista = criarLista(amigos);
-        vencedor[i] = Eliminacao(lista, lim);
+        scanf("%d", &amigos);                 // Lê a quantidade de amigos
+        scanf("%d", &lim);                    // Lê o limite
+        lista = criarLista(amigos);           // Cria a lista com a quantidade de amigos
+        vencedor[i] = Eliminacao(lista, lim); // Chama a função 'Eliminacao' e armazena o resultado no vetor 'vencedor'
     }
     printf("Vecedores: \n");
     for (int j = 0; j < casos; j++)
     {
-        printf("%d\n", vencedor[j]);
+        printf("%d\n", vencedor[j]); // Imprime os vencedores
     }
-    free(vencedor);
+    free(vencedor); // Libera a memória alocada para o vetor 'vencedor'
 }
 
+// Função que cria um novo elemento
 Pno criarElemento(int valor)
 {
-    Pno novo;                       // CRIACAO DE ESTRUTURA DO TIPO PONTEIRO COM NOME NOVO
-    novo = (Pno)malloc(sizeof(no)); // ALOCA (1) ESPACO NA MEMORIA E APONTA AUTOMATICAMENTE DO TAMANHO DA ESTRUTURA
-    if (novo == NULL)
-        exit(0);         // VERIFICA SE ALOCOU CERTO
-    novo->valor = valor; // ENTAO ELE APONTA PARA O VALOR E COLOCA O VALOR
-    novo->prox = NULL;   // ELE APONTA PARA O NULLO ESTANDO PREPARADO PARA ALOCAR OUTRO ESPACO
-    return novo;         // RETORNA UM PONTEIRO PARA A NOVA ESTRUTUA QUE FOI ALOCADA
+    Pno novo;
+    novo = (Pno)malloc(sizeof(no));
+    if (novo == NULL) // Verifica se a alocação foi bem sucedida
+        exit(0);
+    novo->valor = valor;
+    novo->prox = NULL;
+    return novo;
 }
 
+// Função que cria uma lista circular com uma quantidade específica de elementos
 Pno criarLista(int valor)
 {
     Pno a = criarElemento(1);
@@ -66,44 +74,62 @@ Pno criarLista(int valor)
     return a;
 }
 
+// Função que realiza a eliminação dos elementos da lista
 int Eliminacao(Pno inicio, int valor)
 {
-    Pno atual = inicio;
-    Pno b = NULL;
-    int i = 1;
+    Pno atual = inicio; // Ponteiro para o elemento atual
+    Pno aux1 = NULL;       // Ponteiro para o elemento anterior
+    int i = 1;          // Contador
+
+    // Enquanto houver mais de um elemento na lista
     while (atual->prox != atual)
     {
+        // Se o contador é igual ao valor passado como parâmetro
         if (i == valor)
         {
-            if (b)
+            // Se 'b' não é nulo (ou seja, se não estamos no primeiro elemento)
+            if (aux1)
             {
-                b->prox = atual->prox;
+                // Faz o elemento anterior apontar para o próximo elemento
+                aux1->prox = atual->prox;
+                // Libera a memória do elemento atual
                 free(atual);
-                atual = b->prox;
+                // Atualiza o ponteiro para o elemento atual
+                atual = aux1->prox;
             }
             else
             {
+                // Se estamos no primeiro elemento
                 no *aux = atual->prox;
+                // Encontra o último elemento da lista
                 while (aux->prox != inicio)
                 {
                     aux = aux->prox;
                 }
+                // Faz o último elemento apontar para o segundo elemento
                 aux->prox = atual->prox;
+                // Libera a memória do primeiro elemento
                 free(atual);
+                // Atualiza o ponteiro para o início da lista e para o elemento atual
                 inicio = aux->prox;
                 atual = inicio;
             }
+            // Reinicia o contador
             i = 1;
         }
         else
         {
+            // Incrementa o contador e move os ponteiros para o próximo elemento
             i++;
-            b = atual;
+            aux1 = atual;
             atual = atual->prox;
         }
     }
+    // Armazena o valor do último elemento restante
     int vencedor = atual->valor;
+    // Libera a memória do último elemento e zera o ponteiro para o início da lista
     free(atual);
     inicio = NULL;
-    return vencedor;
+
+    return vencedor; // Retorna o valor do último elemento restante
 }
