@@ -12,7 +12,7 @@ typedef struct elemento *Pno; // Definindo 'Pno' como um sinônimo para o pontei
 
 // Protótipos das funções
 Pno criarLista(int);
-int Eliminacao(Pno, int);
+int retirar(Pno, int);
 void inserir(const int casos);
 
 // Função principal
@@ -38,7 +38,7 @@ void inserir(const int casos)
         scanf("%d", &amigos);                 // Lê a quantidade de amigos
         scanf("%d", &lim);                    // Lê o limite
         lista = criarLista(amigos);           // Cria a lista com a quantidade de amigos
-        vencedor[i] = Eliminacao(lista, lim); // Chama a função 'Eliminacao' e armazena o resultado no vetor 'vencedor'
+        vencedor[i] = retirar(lista, lim); // Chama a função 'Eliminacao' e armazena o resultado no vetor 'vencedor'
     }
     printf("Vecedores: \n");
     for (int j = 0; j < casos; j++)
@@ -75,7 +75,7 @@ Pno criarLista(int valor)
 }
 
 // Função que realiza a eliminação dos elementos da lista
-int Eliminacao(Pno inicio, int valor)
+int retirar(Pno inicio, int valor)
 {
     Pno atual = inicio; // Ponteiro para o elemento atual
     Pno aux1 = NULL;       // Ponteiro para o elemento anterior
