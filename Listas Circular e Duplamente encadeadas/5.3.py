@@ -36,19 +36,25 @@ class Lista:
 
     def mostrarOrdemReversa(self):
         ultimo = self.inicio
-        i= 1
+        i = 1
         while ultimo.prox != self.inicio:
-            i+=1
+            i += 1
             ultimo = ultimo.prox
-        #print(i)
-        if(i % 2) == 0:
-            return
-        while True:
-            print(ultimo.valor, end=' ')
-            ultimo = ultimo.ant.ant
-            if ultimo == self.inicio:
-                print(ultimo.valor)
-                return False
+        # print(i)
+        if (i % 2) == 0:
+            while True:
+                print(ultimo.valor, end=' ')
+                ultimo = ultimo.ant.ant
+                if ultimo.ant == self.inicio:
+                    print(ultimo.valor)
+                    return False
+        else:
+            while True:
+                print(ultimo.valor, end=' ')
+                ultimo = ultimo.ant.ant
+                if ultimo == self.inicio:
+                    print(ultimo.valor)
+                    return False
 
 
 # inicializa uma lista vazia
@@ -79,6 +85,8 @@ lista_1.inserirInicio(novo)
 # lista_1.inserirInicio(novo)
 
 # novo = No(9)
+# lista_1.inserirInicio(novo)
+# novo = No(10)
 # lista_1.inserirInicio(novo)
 
 
