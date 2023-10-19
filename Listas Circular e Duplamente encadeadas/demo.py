@@ -128,6 +128,7 @@ novo=No(20)
 lista_1.inserirFim(novo)
 
 lista_1.mostrar()
+lista_1.mostrarOrdemReversa2()
 
 # removendo e mostrando estado da lista
 

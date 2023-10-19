@@ -1,8 +1,3 @@
-"""Implemente uma lista duplamente encadeada circular, 
-onde o ponteiro de prox do último nó deve apontar para o início, 
-bem como o ponteiro de anterior do início deve apontar para o último nó. 
-Você não precisa implementar todas as funções, apenas a inserção no início, de forma a preservar essas características.
-"""
 class No:
     """Esta classe representa um nó/elemento de uma lista encadeada."""
 
@@ -39,20 +34,56 @@ class Lista:
             if atual == self.inicio:
                 return False
 
+    def mostrarOrdemReversa(self):
+        ultimo = self.inicio
+        i= 1
+        while ultimo.prox != self.inicio:
+            i+=1
+            ultimo = ultimo.prox
+        print(i)
+        if(i % 2) == 0:
+            return
+        while True:
+            print(ultimo.valor, end=' ')
+            ultimo = ultimo.ant.ant
+            if ultimo == self.inicio:
+                print(ultimo.valor)
+                return False
+
 
 # inicializa uma lista vazia
 lista_1 = Lista()
 
 # Adiciona alguns nós
-novo = No(10)
+novo = No(1)
 lista_1.inserirInicio(novo)
 
-novo = No(13)
+novo = No(2)
 lista_1.inserirInicio(novo)
 
-novo = No(20)
+novo = No(3)
 lista_1.inserirInicio(novo)
+
+novo = No(4)
+lista_1.inserirInicio(novo)
+
+novo = No(5)
+lista_1.inserirInicio(novo)
+novo = No(6)
+lista_1.inserirInicio(novo)
+
+novo = No(7)
+lista_1.inserirInicio(novo)
+
+novo = No(8)
+lista_1.inserirInicio(novo)
+
+novo = No(9)
+lista_1.inserirInicio(novo)
+
 
 lista_1.mostrar()
+print()
+lista_1.mostrarOrdemReversa()
 
 # removendo e mostrando estado da lista
