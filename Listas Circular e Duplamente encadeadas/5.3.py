@@ -40,7 +40,7 @@ class Lista:
         while ultimo.prox != self.inicio:
             i+=1
             ultimo = ultimo.prox
-        print(i)
+        #print(i)
         if(i % 2) == 0:
             return
         while True:
@@ -69,17 +69,17 @@ lista_1.inserirInicio(novo)
 
 novo = No(5)
 lista_1.inserirInicio(novo)
-novo = No(6)
-lista_1.inserirInicio(novo)
+# novo = No(6)
+# lista_1.inserirInicio(novo)
 
-novo = No(7)
-lista_1.inserirInicio(novo)
+# novo = No(7)
+# lista_1.inserirInicio(novo)
 
-novo = No(8)
-lista_1.inserirInicio(novo)
+# novo = No(8)
+# lista_1.inserirInicio(novo)
 
-novo = No(9)
-lista_1.inserirInicio(novo)
+# novo = No(9)
+# lista_1.inserirInicio(novo)
 
 
 lista_1.mostrar()
