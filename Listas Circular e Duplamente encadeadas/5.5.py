@@ -1,4 +1,8 @@
 
+#Implemente uma função que, dada uma lista, 
+# retorne duas ou tras listas, a primeira com todos os elementos pares e a
+# segunda com todos os elementos ímpares da lista inicial. Mantenha a ordem relativa dos elementos.
+
 
 class No:
     """Esta classe representa um nó/elemento de uma lista encadeada."""
@@ -62,19 +66,16 @@ class Lista:
                 novo = No(primeiro.valor)
                 lista2.inserirFim(novo)
             primeiro = primeiro.prox
+        print("pares: ")
         lista1.mostrar()
+        print()
+        print("impares: ")
         lista2.mostrar()
 
 
 Primeiro = Lista()
-novo = No(1)
-Primeiro.inserirFim(novo)
-novo = No(2)
-Primeiro.inserirFim(novo)
-novo = No(3)
-Primeiro.inserirFim(novo)
-novo = No(4)
-Primeiro.inserirFim(novo)
-novo = No(5)
-Primeiro.inserirFim(novo)
+for i in range(20):
+    novo = No(i)
+    Primeiro.inserirFim(novo)
+    #i+=1
 Primeiro.divisao()
