@@ -35,7 +35,7 @@ class Lista:
             self.inicio.prox = self.inicio
         else:
             novo.prox = self.inicio
-            self.inicio = novo
+            self.inicio.ant = novo
             while ult.prox != self.inicio:  
                 ult = ult.prox
             ult.prox = novo
