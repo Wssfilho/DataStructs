@@ -67,9 +67,14 @@ class Lista:
 
 
 Primeiro = Lista()
-i = 0
-for i in range(5):
-    novo = No(i)
-    Primeiro.inserirFim(novo)
-
+novo = No(1)
+Primeiro.inserirFim(novo)
+novo = No(2)
+Primeiro.inserirFim(novo)
+novo = No(3)
+Primeiro.inserirFim(novo)
+novo = No(4)
+Primeiro.inserirFim(novo)
+novo = No(5)
+Primeiro.inserirFim(novo)
 Primeiro.divisao()
