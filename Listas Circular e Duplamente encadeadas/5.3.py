@@ -6,6 +6,8 @@ class No:
         self.prox = proximo
         self.ant = anterior
 
+#Implemente uma função que imprima uma lista na ordem reversa, porém pule sempre um elemento na impressão. Isto é, dada a lista:
+#<- 1 <-> 2 <-> 3 <-> 4 <-> 5 ->
 
 class Lista:
     """Esta classe contem funções para a manipulação de lista encadeada."""

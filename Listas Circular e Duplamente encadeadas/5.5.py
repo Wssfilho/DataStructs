@@ -1,8 +1,3 @@
-"""Implemente uma lista duplamente encadeada circular, 
-onde o ponteiro de prox do último nó deve apontar para o início, 
-bem como o ponteiro de anterior do início deve apontar para o último nó. 
-Você não precisa implementar todas as funções, apenas a inserção no início, de forma a preservar essas características.
-"""
 
 
 class No:
@@ -41,7 +36,7 @@ class Lista:
         else:
             novo.prox = self.inicio
             self.inicio = novo
-            while ult.prox != self.inicio:
+            while ult.prox != self.inicio:  
                 ult = ult.prox
             ult.prox = novo
             novo.ant = ult
@@ -55,19 +50,26 @@ class Lista:
                 return False
 
 
-# inicializa uma lista vazia
-lista_1 = Lista()
+    def divisao(self):
+        primeiro = self.inicio
+        lista1 = Lista()
+        lista2 = Lista()
+        while primeiro.prox != self.inicio:
+            if (primeiro.valor % 2) == 0:
+                novo = No(primeiro.valor)
+                lista1.inserirFim(novo)
+            else:
+                novo = No(primeiro.valor)
+                lista2.inserirFim(novo)
+            primeiro = primeiro.prox
+        lista1.mostrar()
+        lista2.mostrar()
 
-# Adiciona alguns nós
-novo = No(10)
-lista_1.inserirInicio(novo)
 
-novo = No(13)
-lista_1.inserirInicio(novo)
+Primeiro = Lista()
+i = 0
+for i in range(5):
+    novo = No(i)
+    Primeiro.inserirFim(novo)
 
-novo = No(20)
-lista_1.inserirInicio(novo)
-
-lista_1.mostrar()
-
-# removendo e mostrando estado da lista
+Primeiro.divisao()
