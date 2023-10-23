@@ -1,16 +1,13 @@
 # criacao do objeto
 class No:
     """Esta classe representa um nó/elemento de uma lista encadeada."""
-
     def __init__(self, valor, proximo=None, anterior=None):
         self.valor = valor
         self.prox = proximo
         self.ant = anterior
 
-
 class Lista:
     """Esta classe contem funções para a manipulação de lista encadeada."""
-
     inicio = None
 
     def inserirFim(self, novo: No):
