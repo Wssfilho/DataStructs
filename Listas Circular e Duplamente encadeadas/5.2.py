@@ -15,7 +15,7 @@ class No:
 
 
 class Lista:
-    """Esta classe contem funções para a manipulação de lista encadeada."""
+    """Esta classe contem funções para a manipulação de lista encadeada circular."""
 
     inicio = None
 
@@ -23,7 +23,7 @@ class Lista:
         ult = self.inicio
         if self.inicio == None:
             self.inicio = novo
-            self.inicio.prox = self.inicio
+            self.inicio.prox = self.inicio #duplamente encadeada circular
             # print(self.inicio.valor)
         else:
             novo.prox = self.inicio
