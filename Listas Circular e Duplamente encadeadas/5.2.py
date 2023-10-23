@@ -39,12 +39,12 @@ class Lista:
             self.inicio = novo
             self.inicio.prox = self.inicio
         else:
-            novo.prox = self.inicio
-            self.inicio = novo
             while ult.prox != self.inicio:
                 ult = ult.prox
             ult.prox = novo
             novo.ant = ult
+            novo.prox = self.inicio
+            self.inicio.ant = novo
 
     def mostrar(self):
         atual = self.inicio
