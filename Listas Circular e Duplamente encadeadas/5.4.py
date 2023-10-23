@@ -29,11 +29,11 @@ class Lista:
         while atual != None:
             print(atual.valor, end=' ')
             atual = atual.prox
-            
+
     def ocorrencias(self, k: int):
         occ = self.inicio
-        while occ.prox != None:
-            if(occ.valor % k) == 0:
+        while occ is not None:
+            if (occ.valor % k) == 0:
+                occ.ant.prox = occ.prox
+                occ.prox.ant = occ.ant
             
-            
-            occ = occ.prox

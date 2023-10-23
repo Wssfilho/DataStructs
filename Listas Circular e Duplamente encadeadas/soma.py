@@ -1,10 +1,12 @@
 # criacao do objeto
 class No:
     """Esta classe representa um nó/elemento de uma lista encadeada."""
+
     def __init__(self, valor, proximo=None, anterior=None):
         self.valor = valor
         self.prox = proximo
         self.ant = anterior
+
 
 class Lista:
     """Esta classe contem funções para a manipulação de lista encadeada."""
@@ -31,7 +33,7 @@ class Lista:
         aux1: No = inicio1
         aux2: No = ultimo2
         i = 0
-        while aux2.prox !=None:
+        while aux2.prox != None:
             aux2 = aux2.prox
         for i in range(valor):
             soma = aux1.valor + aux2.valor
@@ -46,23 +48,28 @@ class Lista:
 
 
 numero = int(input())
-while numero >= 0 and numero <= 1000:
+while numero != 0: #para quando e zero
     lista1 = Lista()
     lista2 = Lista()
     soma = Lista()
+    print()
+    x = input().split()
+    x = [int(i) for i in x]
 
     for i in range(numero):
-        elem = int(input())
-        novo = No(elem)
+        novo = No(x[i])
         lista1.inserirFim(novo)
-
+    x = input().split()
+    x = [int(i) for i in x]
     for i in range(numero):
-        elem2 = int(input())
-        novo = No(elem2)
+        novo = No(x[i])
         lista2.inserirFim(novo)
+
     soma.somar(lista1.inicio, lista2.inicio, numero)
+    print()
     soma.mostrar()
-    numero = int(input())
-    
+    print()
+    numero = int(input()) 
+
 
 # inicializa uma lista vazia
