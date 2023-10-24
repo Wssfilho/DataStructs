@@ -54,7 +54,6 @@ while numero != 0: #para quando e zero!
     soma = Lista()
     x = input().split()
     x = [int(i) for i in x] #recebe os dados
-
     for i in range(numero):
         novo = No(x[i])
         lista1.inserirFim(novo) #preenche as listas
@@ -68,7 +67,7 @@ while numero != 0: #para quando e zero!
     print()
     print("saida: ")
     soma.mostrar()
-    print("\n")
+    #print("\n")
     numero = int(input()) #recebe o proximo numero de operacoes (tamanho), se for 0 sai
 
 
