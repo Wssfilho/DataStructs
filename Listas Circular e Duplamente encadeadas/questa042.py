@@ -50,10 +50,6 @@ class Listaec:
         proximo.prox = atual
         atual.ant = proximo
 
-    
-                
-
-
 lista1 = Listaec()
 novo = No(10)
 lista1.inserirFim(novo)
@@ -63,5 +59,5 @@ novo = No(21)
 lista1.inserirFim(novo)
 novo = No(22)
 lista1.inserirFim(novo)
-lista1.trocar(2)
+lista1.trocar(int(input()))
 lista1.mostrar()
