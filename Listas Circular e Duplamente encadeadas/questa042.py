@@ -28,23 +28,30 @@ class Listaec:
             atual = atual.prox
 
     def trocar(self, i):
-        j = 0
         if self.vazia():
             return
+        atual = self.inicio
+        j = 0
+        while atual and j < i:
+            atual = atual.prox
+            j += 1
+        if atual is None or atual.prox is None:
+            return
+        proximo = atual.prox
+        if atual.ant is None:
+            self.inicio = proximo
+            proximo.ant = None
         else:
-            andar = self.inicio
-            while andar.prox != None:
-                if i == 0:
-                    return   
-                if (j == i):
-                    andar.prox = andar.prox.prox
-                    andar.prox.ant.ant = andar.ant
-                    andar.ant = andar.prox.ant
-                    andar.prox.ant.prox = andar.ant.ant.prox
-                    andar.prox.ant = andar
-                    andar.ant.ant.prox = andar.ant
-                j += 1
-                andar = andar.prox
+            atual.ant.prox = proximo
+            proximo.ant = atual.ant
+        atual.prox = proximo.prox
+        if proximo.prox is not None:
+            proximo.prox.ant = atual
+        proximo.prox = atual
+        atual.ant = proximo
+
+    
+                
 
 
 lista1 = Listaec()
