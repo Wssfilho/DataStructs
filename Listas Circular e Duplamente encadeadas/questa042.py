@@ -1,5 +1,5 @@
 class No:
-    def __init__(self, valor, prox = None, ant = None ):
+    def __init__(self, valor, prox=None, ant=None):
         self.valor = valor
         self.ant = ant
         self.prox = prox
@@ -50,14 +50,12 @@ class Listaec:
         proximo.prox = atual
         atual.ant = proximo
 
+
 lista1 = Listaec()
-novo = No(10)
-lista1.inserirFim(novo)
-novo = No(20)
-lista1.inserirFim(novo)
-novo = No(21)
-lista1.inserirFim(novo)
-novo = No(22)
-lista1.inserirFim(novo)
-lista1.trocar(int(input()))
+laco = int(input("insira a quantidade dos elementos: "))  # funcao para pedir o tamanho da lista
+for k in range(laco):
+    novo = No(int(input("elemento: "))) #para cada elemento inserido é necessário ter um enter entre eles
+    lista1.inserirFim(novo)
+
+lista1.trocar(int(input("Insira o indece que quer mover: ")))
 lista1.mostrar()
