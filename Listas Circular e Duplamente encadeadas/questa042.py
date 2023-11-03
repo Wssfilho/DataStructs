@@ -34,6 +34,8 @@ class Listaec:
         else:
             andar = self.inicio
             while andar.prox != None:
+                if i == 0:
+                    return   
                 if (j == i):
                     andar.prox = andar.prox.prox
                     andar.prox.ant.ant = andar.ant
@@ -54,5 +56,5 @@ novo = No(21)
 lista1.inserirFim(novo)
 novo = No(22)
 lista1.inserirFim(novo)
-lista1.trocar(2)
+lista1.trocar(1)
 lista1.mostrar()
