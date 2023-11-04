@@ -2,16 +2,16 @@ class No:
     def __init__(self, valor, prox=None, ant=None):
         self.valor = valor
         self.ant = ant
-        self.prox = prox
+        self.prox = prox #criação do Nó com lista duplamente encadeada
 
 
 class Listaec:
     inicio = None
 
     def vazia(self):
-        return self.inicio is None
+        return self.inicio is None #verifica se é vazia
 
-    def inserirFim(self, novo: No):
+    def inserirFim(self, novo: No): #funcao insere o elemento no fim da lista
         if self.vazia():
             self.inicio = novo
         else:
@@ -21,31 +21,34 @@ class Listaec:
             ultimo.prox = novo
             novo.ant = ultimo
 
-    def mostrar(self):
+    def mostrar(self): #funcao que mostra a lista
         atual = self.inicio
         while atual != None:
             print(atual.valor, end='<->')
             atual = atual.prox
 
-    def trocar(self, i):
-        if self.vazia():
+    def trocar(self, i): #funcao para fazer as trocas do nó
+        if self.vazia(): #verifica se a lista e vazia
             return
-        atual = self.inicio
-        j = 0
-        while atual and j < i:
+        if self.inicio.prox is None: #se a lista so tem um elemento
+            print("a lista so tem um elemento")
+            return
+        atual = self.inicio #atual recebe o inicio para nao perder a referencia do inicio
+        j = 0 #variavel de controle
+        while atual and j < i: #o while vai funcionar até que a variavel de controle seja igual ao numero que o usuario digitou, ele anda
             atual = atual.prox
-            j += 1
-        if atual is None or atual.prox is None:
-            return
-        proximo = atual.prox
-        if atual.ant is None:
+            j += 1 #atualiza a var de controle
+        if atual is None or atual.prox is None: #verifica se ja chegou no fim, ou se é o fim
+            return #retorna se sim
+        proximo = atual.prox #cria uma variavel proximo que rebe o atual caso ja tenha chegado no i
+        if atual.ant is None: #e o nó atual não tiver um nó anterior, significa que ele é o nó inicial da lista.
             self.inicio = proximo
             proximo.ant = None
         else:
             atual.ant.prox = proximo
             proximo.ant = atual.ant
-        atual.prox = proximo.prox
-        if proximo.prox is not None:
+        atual.prox = proximo.prox 
+        if proximo.prox is not None: #Se o nó seguinte de proximo não for None, significa que proximo não é o nó final da lista.
             proximo.prox.ant = atual
         proximo.prox = atual
         atual.ant = proximo
