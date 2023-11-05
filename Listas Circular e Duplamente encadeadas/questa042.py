@@ -1,3 +1,9 @@
+# Escreva uma função para deslocar o nó da posição i para frente em uma lista. 
+# Por exemplo, dada a lista 10->20->21->22->, desloca-se o nó da posição 1 para frente, 
+# resultando em 10->21->20->22->. Escolha qualquer lista encadeada de sua preferência, 
+# simples ou duplamente encadeada, circular ou não. Considere que o nó a ser deslocado é
+# um nó do meio (existe nós antes e depois dele) e considere que a posição i sempre existe na lista. 
+
 class No:
     def __init__(self, valor, prox=None, ant=None):
         self.valor = valor
@@ -53,7 +59,7 @@ class Listaec:
         proximo.prox = atual
         atual.ant = proximo
 
-
+#inserir dados na lista
 lista1 = Listaec()
 laco = int(input("insira a quantidade dos elementos: "))  # funcao para pedir o tamanho da lista
 for k in range(laco):
