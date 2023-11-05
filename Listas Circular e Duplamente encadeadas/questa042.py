@@ -49,7 +49,7 @@ class Listaec:
             proximo.ant = atual.ant
         atual.prox = proximo.prox 
         if proximo.prox is not None: #Se o nó seguinte de proximo não for None, significa que proximo não é o nó final da lista.
-            proximo.prox.ant = atual
+            proximo.prox.ant = atual #entao ele pode continuar andando
         proximo.prox = atual
         atual.ant = proximo
 
