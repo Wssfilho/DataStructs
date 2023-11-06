@@ -46,7 +46,7 @@ class Listaec:
             j += 1 #atualiza a var de controle
         if atual is None or atual.prox is None: #verifica se ja chegou no fim, ou se é o fim
             return #retorna se sim
-        proximo = atual.prox #cria uma variavel proximo que rebe o atual caso ja tenha chegado no i
+        proximo = atual.prox #cria uma variavel proximo que rebe o atual em proximo, para ficar mais facil a manipulacao dos ponteiros sem perder referencia
         if atual.ant is None: #e o nó atual não tiver um nó anterior, significa que ele é o nó inicial da lista.
             self.inicio = proximo
             proximo.ant = None
@@ -55,7 +55,7 @@ class Listaec:
             proximo.ant = atual.ant
         atual.prox = proximo.prox 
         if proximo.prox is not None: #Se o nó seguinte de proximo não for None, significa que proximo não é o nó final da lista.
-            proximo.prox.ant = atual #entao ele pode continuar andando
+            proximo.prox.ant = atual #atribue o ponteiro do proximo anterior ao atual
         proximo.prox = atual
         atual.ant = proximo
 
