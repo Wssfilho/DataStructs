@@ -34,12 +34,12 @@ class Listaec:
             atual = atual.prox
 
     def trocar(self, i): #funcao para fazer as trocas do nó
+        atual = self.inicio #atual recebe o inicio para nao perder a referencia do inicio
         if self.vazia(): #verifica se a lista e vazia
             return
         if self.inicio.prox is None: #se a lista so tem um elemento
             print("a lista so tem um elemento")
             return
-        atual = self.inicio #atual recebe o inicio para nao perder a referencia do inicio
         j = 0 #variavel de controle
         while atual and j < i: #o while vai funcionar até que a variavel de controle seja igual ao numero que o usuario digitou, ele anda
             atual = atual.prox
