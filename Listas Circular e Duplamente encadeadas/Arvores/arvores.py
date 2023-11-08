@@ -88,5 +88,6 @@ novo_1 = No(1)
 
 num = int(input())
 Arvore.removefolha(novo_1, num)
+print(Arvore.procurar_no(novo_1, 1))
 Arvore.pre_ordem(novo_1)
 
