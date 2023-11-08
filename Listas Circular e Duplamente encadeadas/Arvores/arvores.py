@@ -47,7 +47,7 @@ class Arvore:
 
     def pre_ordem(raiz: No):
         if raiz is not None:
-            print(raiz.valor, end=' ')
+            print(raiz.valor, end= '->')
             Arvore.pre_ordem(raiz.esquerda)
             Arvore.pre_ordem(raiz.direita)
 
@@ -82,21 +82,39 @@ class Arvore:
             raiz.esquerda = Arvore.remove_folhas_com_valor(raiz.esquerda, valor)
             raiz.direita = Arvore.remove_folhas_com_valor(raiz.direita, valor)
         return raiz
-# Uso das funções criadas
-novo_1 = No(10)
-novo_2 = No(10)
-novo_3 = No(20, novo_2, novo_1)
+#função que calcula o número de folhas em uma árvore dada
+    def folhas(raiz: No) -> int:
+        if raiz is None:
+            return 0
+        if raiz.esquerda is None and raiz.direita is None:
+            return 1
+        return Arvore.folhas(raiz.esquerda) + Arvore.folhas(raiz.direita)
+    
 
-novo_1 = No(40)
-novo_2 = No(50, novo_1, novo_3)
+# Uso das funções criadas, funcao a
+novo_1 = No(7)
+novo_2 = No(5)
+novo_3 = No(7)
+novo_4 = No(6)
+novo_1 = No(8, novo_1, novo_2)
+novo_5 = No(7, novo_3)
+novo_3 = No(9, novo_4, novo_5)
+novo_6 = No(5, None, novo_1)
+novo_fim = No(6, novo_3, novo_6)
+Arvore.pre_ordem(novo_fim)
 
+print("num: ", Arvore.folhas(novo_fim))
+
+
+
+# Uso das funções criadas, funcao b
+novo_1 = No(1)
 # árvore montada na variável novo_2:
 #       50
 # 40        20
-#         10   30
+#         10   10
 
 num = int(input())
-Arvore.remove_folhas_com_valor(novo_2, num)
-print()
-Arvore.pre_ordem(novo_2)
+Arvore.remove_folhas_com_valor(novo_1, num)
+Arvore.pre_ordem(novo_1)
 
