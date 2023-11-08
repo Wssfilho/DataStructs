@@ -46,9 +46,6 @@ class Arvore:
         return 1 + max(h_esq, h_dir)
 
     def pre_ordem(raiz: No):
-        if raiz is None:
-            print("vazia")
-            return
         if raiz is not None:
             print(raiz.valor, end=' ')
             Arvore.pre_ordem(raiz.esquerda)
@@ -76,18 +73,30 @@ class Arvore:
                 f.append(raiz.direita)
                 print(raiz.valor, end=' ')
                 
-    def removefolha(raiz: No, valor: int) -> No:
+    def remove_folhas_com_valor(raiz: No, valor: int) -> No:
+        if raiz is None:
+            return None
         if raiz.esquerda is None and raiz.direita is None and raiz.valor == valor:
             return None
         else:
-            raiz.esquerda = Arvore.removefolha(raiz.esquerda, valor)
-            raiz.direita = Arvore.removefolha(raiz.direita, valor)
+            raiz.esquerda = Arvore.remove_folhas_com_valor(raiz.esquerda, valor)
+            raiz.direita = Arvore.remove_folhas_com_valor(raiz.direita, valor)
         return raiz
 # Uso das funções criadas
-novo_1 = No(1)
+novo_1 = No(10)
+novo_2 = No(10)
+novo_3 = No(20, novo_2, novo_1)
+
+novo_1 = No(40)
+novo_2 = No(50, novo_1, novo_3)
+
+# árvore montada na variável novo_2:
+#       50
+# 40        20
+#         10   30
 
 num = int(input())
-Arvore.removefolha(novo_1, num)
-print(Arvore.procurar_no(novo_1, 1))
-Arvore.pre_ordem(novo_1)
+Arvore.remove_folhas_com_valor(novo_2, num)
+print()
+Arvore.pre_ordem(novo_2)
 
