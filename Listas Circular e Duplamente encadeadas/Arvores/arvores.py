@@ -90,8 +90,14 @@ class Arvore:
         return Arvore.qtdfolhas(raiz.esquerda) + Arvore.qtdfolhas(raiz.direita)
     
 #funcao para verificar se as duas sao iguais
-    def verficar(raiz1: No, raiz2: No):
-        return
+    def verficar(raiz1: No, raiz2: No) -> int:
+            if raiz1 is None and raiz2 is None:
+                return 1
+            if raiz1 is None or raiz2 is None:
+                return 0
+            else:
+                return Arvore.verficar(raiz1.esquerda, raiz2.esquerda) * Arvore.verficar(raiz1.direita, raiz2.direita)
+    
 # Uso das funções criadas, funcao a
 novo_1 = No(7)
 novo_2 = No(5)
@@ -107,7 +113,32 @@ Arvore.pre_ordem(novo_fim)
 print("Num: ", Arvore.qtdfolhas(novo_fim))
 
 
+#teste da funcao comparar:
 
+
+novo_1 = No(7)
+novo_2 = No(5)
+novo_3 = No(7)
+novo_4 = No(6)
+novo_1 = No(8, novo_1, novo_2)
+novo_5 = No(7, novo_3)
+novo_3 = No(9, novo_4, novo_5)
+novo_6 = No(5, None, novo_1)
+novo_fim = No(6, novo_3, novo_6)
+novo_1 = No(7)
+novo_2 = No(5)
+novo_3 = No(7)
+novo_4 = No(6)
+novo_1 = No(8, novo_1, novo_2)
+novo_5 = No(7, novo_3)
+novo_3 = No(9, novo_4, novo_5)
+novo_6 = No(5, None, novo_1)
+novo_fim2 = No(6, novo_3, novo_6)
+a = Arvore.verficar(novo_fim, novo_fim2)
+if a == 0:
+    print("arvores diferentes")
+elif a == 1:
+    print("arvores sao iguais") 
 # Uso das funções criadas, funcao b
 novo_1 = No(1)
 # árvore montada na variável novo_2:
