@@ -72,8 +72,16 @@ class Arvore:
                 f.append(raiz.esquerda)
                 f.append(raiz.direita)
                 print(raiz.valor, end=' ')
-
-
+                
+    def remove_folhas_com_valor(raiz: No, valor: int) -> No:
+        if raiz is None:
+            return None
+        if raiz.esquerda is None and raiz.direita is None and raiz.valor == valor:
+            return None
+        else:
+            raiz.esquerda = Arvore.remove_folhas_com_valor(raiz.esquerda, valor)
+            raiz.direita = Arvore.remove_folhas_com_valor(raiz.direita, valor)
+        return raiz
 # Uso das funções criadas
 novo_1 = No(30)
 novo_2 = No(10)
@@ -87,11 +95,8 @@ novo_2 = No(50, novo_1, novo_3)
 # 40        20
 #         10   30
 
-print("Número de nós na árvore: ", Arvore.numero_nos(novo_2))
-print("Altura da árvore: ", Arvore.altura(novo_2))
+# num = int(input())
+# Arvore.remove_folhas_com_valor(novo_2, num)
+# print()
+# Arvore.pre_ordem(novo_2)
 
-print("Percurso em ordem: ")
-Arvore.in_ordem(novo_2)
-
-print("\nPercurso em largura: ")
-Arvore.percurso_em_largura(novo_2)
