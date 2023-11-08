@@ -92,8 +92,6 @@ class Arvore:
 #funcao para verificar se as duas sao iguais
     def verficar(raiz1: No, raiz2: No):
         return
-        
-        
 # Uso das funções criadas, funcao a
 novo_1 = No(7)
 novo_2 = No(5)
