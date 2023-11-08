@@ -112,8 +112,19 @@ Arvore.pre_ordem(novo_fim)
 
 print("Num: ", Arvore.qtdfolhas(novo_fim))
 
+# Uso das funções criadas, funcao b
+novo_1 = No(1)
+# árvore montada na variável novo_2:
+#       50
+# 40        20
+#         10   10
 
-#teste da funcao comparar:
+num = int(input())
+Arvore.remove_folhas_com_valor(novo_1, num)
+Arvore.pre_ordem(novo_1)
+
+
+#teste da funcao comparar, funcao c:
 
 
 novo_1 = No(7)
@@ -131,7 +142,7 @@ novo_3 = No(7)
 novo_4 = No(6)
 novo_1 = No(8, novo_1, novo_2)
 novo_5 = No(7, novo_3)
-novo_3 = No(9, novo_4, novo_5)
+novo_3 = No(9, novo_5, novo_4)
 novo_6 = No(5, None, novo_1)
 novo_fim2 = No(6, novo_3, novo_6)
 a = Arvore.verficar(novo_fim, novo_fim2)
@@ -139,14 +150,4 @@ if a == 0:
     print("arvores diferentes")
 elif a == 1:
     print("arvores sao iguais") 
-# Uso das funções criadas, funcao b
-novo_1 = No(1)
-# árvore montada na variável novo_2:
-#       50
-# 40        20
-#         10   10
-
-num = int(input())
-Arvore.remove_folhas_com_valor(novo_1, num)
-Arvore.pre_ordem(novo_1)
 
