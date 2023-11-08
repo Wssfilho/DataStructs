@@ -17,7 +17,6 @@ class Arvore:
     def procurar_no(raiz: No, x: int) -> No:
         if raiz is None:
             return None
-
         if raiz.valor == x:
             return raiz
 
@@ -72,7 +71,7 @@ class Arvore:
                 f.append(raiz.esquerda)
                 f.append(raiz.direita)
                 print(raiz.valor, end=' ')
-                
+    #funcao que remove as ocorrencias de folhas das arvores            
     def remove_folhas_com_valor(raiz: No, valor: int) -> No:
         if raiz is None:
             return None
@@ -83,14 +82,18 @@ class Arvore:
             raiz.direita = Arvore.remove_folhas_com_valor(raiz.direita, valor)
         return raiz
 #função que calcula o número de folhas em uma árvore dada
-    def folhas(raiz: No) -> int:
+    def qtdfolhas(raiz: No) -> int:
         if raiz is None:
             return 0
         if raiz.esquerda is None and raiz.direita is None:
             return 1
-        return Arvore.folhas(raiz.esquerda) + Arvore.folhas(raiz.direita)
+        return Arvore.qtdfolhas(raiz.esquerda) + Arvore.qtdfolhas(raiz.direita)
     
-
+#funcao para verificar se as duas sao iguais
+    def verficar(raiz1: No, raiz2: No):
+        return
+        
+        
 # Uso das funções criadas, funcao a
 novo_1 = No(7)
 novo_2 = No(5)
@@ -103,7 +106,7 @@ novo_6 = No(5, None, novo_1)
 novo_fim = No(6, novo_3, novo_6)
 Arvore.pre_ordem(novo_fim)
 
-print("num: ", Arvore.folhas(novo_fim))
+print("Num: ", Arvore.qtdfolhas(novo_fim))
 
 
 
