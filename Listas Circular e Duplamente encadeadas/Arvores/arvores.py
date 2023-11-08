@@ -86,12 +86,6 @@ class Arvore:
 # Uso das funções criadas
 novo_1 = No(1)
 
-
-# árvore montada na variável novo_2:
-#       50
-# 40        20
-#         10   30
-
 num = int(input())
 Arvore.removefolha(novo_1, num)
 Arvore.pre_ordem(novo_1)
