@@ -2,16 +2,12 @@ class No:
     """Esta classe representa um nó/elemento de uma árvore.
        Equivalente a função criar_arvore em C -- no slide
     """
-
     def __init__(self, valor, esquerda=None, direita=None):
         self.valor = valor
         self.esquerda = esquerda
         self.direita = direita
-
-
 class Arvore:
     """Esta classe contem funções para a manipulação de árvores binárias."""
-
     # Recebe um Nó de uma árvore (raiz local) e um inteiro.
     # Retorna o No que contem o valor inteiro.
     def procurar_no(raiz: No, x: int) -> No:
@@ -71,6 +67,7 @@ class Arvore:
                 f.append(raiz.esquerda)
                 f.append(raiz.direita)
                 print(raiz.valor, end=' ')
+                
     ############# FUNCOES FEITA POR WILSON ################
     #funcao que remove as ocorrencias de folhas das arvores            
     def remove_folhas_com_valor(raiz: No, valor: int) -> No:
