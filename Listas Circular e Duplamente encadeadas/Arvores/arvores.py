@@ -71,6 +71,7 @@ class Arvore:
                 f.append(raiz.esquerda)
                 f.append(raiz.direita)
                 print(raiz.valor, end=' ')
+    ############# FUNCOES FEITA POR WILSON ################
     #funcao que remove as ocorrencias de folhas das arvores            
     def remove_folhas_com_valor(raiz: No, valor: int) -> No:
         if raiz is None:
@@ -99,6 +100,10 @@ class Arvore:
                 return Arvore.verficar(raiz1.esquerda, raiz2.esquerda) * Arvore.verficar(raiz1.direita, raiz2.direita)
     
 # Uso das funções criadas, funcao a
+#1. 
+ent1 = No(1)
+print("Qtdfolhas 1: ", Arvore.qtdfolhas(ent1))
+#2. 
 novo_1 = No(7)
 novo_2 = No(5)
 novo_3 = No(7)
@@ -108,46 +113,64 @@ novo_5 = No(7, novo_3)
 novo_3 = No(9, novo_4, novo_5)
 novo_6 = No(5, None, novo_1)
 novo_fim = No(6, novo_3, novo_6)
-Arvore.pre_ordem(novo_fim)
-
-print("Num: ", Arvore.qtdfolhas(novo_fim))
+#Arvore.pre_ordem(novo_fim)
+print("Qtdfolhas 2: ", Arvore.qtdfolhas(novo_fim))
+#3. 
+novo_5 = No(5)
+novo_7 = No(7)
+novo_6 = No(6)
+novo_8 = No(8, novo_5, novo_7)
+novo_7 = No(7, None, novo_8)
+novo_9 = No(9, novo_6, None)
+novo_com = No(6, novo_7, novo_9)
+print("Qtdfolhas 3: ", Arvore.qtdfolhas(novo_com))
 
 # Uso das funções criadas, funcao b
+#1: 
 novo_1 = No(1)
-# árvore montada na variável novo_2:
-#       50
-# 40        20
-#         10   10
 
-num = int(input())
-Arvore.remove_folhas_com_valor(novo_1, num)
-Arvore.pre_ordem(novo_1)
+a: No = Arvore.remove_folhas_com_valor(novo_1, 1)
+if a is None:
+    print("Lista se tornou vazia")
+else:
+    Arvore.pre_ordem(a)
 
-
+# 2:
+novo_1 = No(7)
+novo_2 = No(5)
+novo_3 = No(7)
+novo_4 = No(6)
+novo_1 = No(8, novo_1, novo_2)
+novo_5 = No(7, novo_3)
+novo_3 = No(9, novo_4, novo_5)
+novo_6 = No(5, None, novo_1)
+novo_fim = No(6, novo_3, novo_6)
+a: No = Arvore.remove_folhas_com_valor(novo_fim, 7)
+Arvore.pre_ordem(a)
 #teste da funcao comparar, funcao c:
 
 
-novo_1 = No(7)
-novo_2 = No(5)
-novo_3 = No(7)
-novo_4 = No(6)
-novo_1 = No(8, novo_1, novo_2)
-novo_5 = No(7, novo_3)
-novo_3 = No(9, novo_4, novo_5)
-novo_6 = No(5, None, novo_1)
-novo_fim = No(6, novo_3, novo_6)
-novo_1 = No(7)
-novo_2 = No(5)
-novo_3 = No(7)
-novo_4 = No(6)
-novo_1 = No(8, novo_1, novo_2)
-novo_5 = No(7, novo_3)
-novo_3 = No(9, novo_5, novo_4)
-novo_6 = No(5, None, novo_1)
-novo_fim2 = No(6, novo_3, novo_6)
-a = Arvore.verficar(novo_fim, novo_fim2)
-if a == 0:
-    print("arvores diferentes")
-elif a == 1:
-    print("arvores sao iguais") 
+# novo_1 = No(7)
+# novo_2 = No(5)
+# novo_3 = No(7)
+# novo_4 = No(6)
+# novo_1 = No(8, novo_1, novo_2)
+# novo_5 = No(7, novo_3)
+# novo_3 = No(9, novo_4, novo_5)
+# novo_6 = No(5, None, novo_1)
+# novo_fim = No(6, novo_3, novo_6)
+# novo_1 = No(7)
+# novo_2 = No(5)
+# novo_3 = No(7)
+# novo_4 = No(6)
+# novo_1 = No(8, novo_1, novo_2)
+# novo_5 = No(7, novo_3)
+# novo_3 = No(9, novo_5, novo_4)
+# novo_6 = No(5, None, novo_1)
+# novo_fim2 = No(6, novo_3, novo_6)
+# a = Arvore.verficar(novo_fim, novo_fim2)
+# if a == 0:
+#     print("arvores diferentes")
+# elif a == 1:
+#     print("arvores sao iguais") 
 
