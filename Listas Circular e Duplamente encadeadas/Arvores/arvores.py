@@ -1,3 +1,8 @@
+# A. função que calcula o número de folhas em uma árvore dada
+# B. função recursiva que apaga todas as folhas de uma árvore que tenham a chave
+# igual a um valor dado
+# C. função que compara se duas árvores binárias são iguais
+
 class No:
     """Esta classe representa um nó/elemento de uma árvore.
        Equivalente a função criar_arvore em C -- no slide
@@ -8,93 +13,42 @@ class No:
         self.direita = direita
 class Arvore:
     """Esta classe contem funções para a manipulação de árvores binárias."""
-    # Recebe um Nó de uma árvore (raiz local) e um inteiro.
-    # Retorna o No que contem o valor inteiro.
-    def procurar_no(raiz: No, x: int) -> No:
-        if raiz is None:
-            return None
-        if raiz.valor == x:
-            return raiz
 
-        esq = Arvore.procurar_no(raiz.esquerda, x)
-        if (esq is not None):
-            return esq
-
-        _dir = Arvore.procurar_no(raiz.direita, x)
-        if (_dir is not None):
-            return _dir
-
-        return None
-
-    def numero_nos(raiz: No) -> int:
-        if raiz is None:
-            return 0
-        n_esq = Arvore.numero_nos(raiz.esquerda)
-        n_dir = Arvore.numero_nos(raiz.direita)
-        return n_esq+n_dir+1
-
-    def altura(raiz: No) -> int:
-        if raiz is None:
-            return 0
-        h_esq = Arvore.altura(raiz.esquerda)
-        h_dir = Arvore.altura(raiz.direita)
-        return 1 + max(h_esq, h_dir)
-
-    def pre_ordem(raiz: No):
+    def pre_ordem(raiz: No): #funcai para imprimir a arvore indo da raiz para a esquerda depois para a direita
         if raiz is not None:
             print(raiz.valor, end= '->')
             Arvore.pre_ordem(raiz.esquerda)
-            Arvore.pre_ordem(raiz.direita)
-
-    def pos_ordem(raiz: No):
-        if raiz is not None:
-            Arvore.pos_ordem(raiz.esquerda)
-            Arvore.pos_ordem(raiz.direita)
-            print(raiz.valor, end=' ')
-
-    def in_ordem(raiz: No):
-        if raiz is not None:
-            Arvore.in_ordem(raiz.esquerda)
-            print(raiz.valor, end=' ')
-            Arvore.in_ordem(raiz.direita)
-
-    def percurso_em_largura(raiz: No):
-        f = list()
-        f.append(raiz)  # insere no fim
-        while len(f) > 0:
-            raiz = f.pop(0)  # removo no início
-            if raiz is not None:
-                f.append(raiz.esquerda)
-                f.append(raiz.direita)
-                print(raiz.valor, end=' ')
-                
+            Arvore.pre_ordem(raiz.direita)   
     ############# FUNCOES FEITA POR WILSON ################
-    #funcao que remove as ocorrencias de folhas das arvores            
-    def remove_folhas_com_valor(raiz: No, valor: int) -> No:
-        if raiz is None:
+    #funcao que remove as ocorrencias de folhas em uma arvore            
+    def removefolhas(raiz: No, valor: int) -> No:
+        if raiz is None: #verifica se esta vazia
             return None
-        if raiz.esquerda is None and raiz.direita is None and raiz.valor == valor:
-            return None
+        if raiz.esquerda is None and raiz.direita is None and raiz.valor == valor: #verifica na mesma raiz se é uma folha (esq e dir sao None) e se é a folha com o valor
+            return None #remove a folha retornando none
         else:
-            raiz.esquerda = Arvore.remove_folhas_com_valor(raiz.esquerda, valor)
-            raiz.direita = Arvore.remove_folhas_com_valor(raiz.direita, valor)
-        return raiz
-#função que calcula o número de folhas em uma árvore dada
-    def qtdfolhas(raiz: No) -> int:
-        if raiz is None:
+            raiz.esquerda = Arvore.removefolhas(raiz.esquerda, valor) #faz recursivamente para achar todas as folhas com o valor indicado
+            raiz.direita = Arvore.removefolhas(raiz.direita, valor)
+        return raiz #se nao tiver nenhuma folha com o valor retorna a propia arvore 
+    #função que calcula o número de folhas em uma árvore
+    def qtdfolhas(raiz: No) -> int: 
+        if raiz is None: #se a raiz nao existir retorna 0
             return 0
-        if raiz.esquerda is None and raiz.direita is None:
+        if raiz.esquerda is None and raiz.direita is None: #se chegou na raiz onde esq e dir sao none retorna 1 pois e folha
             return 1
-        return Arvore.qtdfolhas(raiz.esquerda) + Arvore.qtdfolhas(raiz.direita)
+        return Arvore.qtdfolhas(raiz.esquerda) + Arvore.qtdfolhas(raiz.direita) #chama as funcoes para esq e dir recursivamente e soma cada valor
     
-#funcao para verificar se as duas sao iguais
-    def verficar(raiz1: No, raiz2: No) -> int:
-            if raiz1 is None and raiz2 is None:
+    #funcao para verificar se as duas sao iguais
+    def verficar(raiz1: No, raiz2: No) -> int: 
+            #nessa funcao pensei num modo de percorrer o mesmo lado nas duas folhas, e se a multiplicacao delas for 1 quer dizer que elas sao identicas
+            #se for 0, 0.1 e zero, logo elas sao diferentes
+            if raiz1 is None and raiz2 is None: #verifica se chegou no fim da arvore e se ambas sao none
                 return 1
-            if raiz1 is None or raiz2 is None:
+            if raiz1 is None or raiz2 is None: #verifica se uma ou outra e none, se uma for e a outra nao as arvores estao desbalanceadas
                 return 0
             else:
-                return Arvore.verficar(raiz1.esquerda, raiz2.esquerda) * Arvore.verficar(raiz1.direita, raiz2.direita)
+                return Arvore.verficar(raiz1.esquerda, raiz2.esquerda) * Arvore.verficar(raiz1.direita, raiz2.direita) #Se ambas as recursoes retornarem 1 (indicando que as subárvores à esquerda e à direita são iguais), 
+            #a função retorna 1. Se alguma delas forem 0, a multiplicacao fica 0 oq identifica desigualdade na comparacao das arvores
     
 # Uso das funções criadas, funcao a
 #1. 
@@ -126,7 +80,7 @@ print("Qtdfolhas 3: ", Arvore.qtdfolhas(novo_com))
 #1: 
 novo_1 = No(1)
 
-a: No = Arvore.remove_folhas_com_valor(novo_1, 1)
+a: No = Arvore.removefolhas(novo_1, 1)
 if a is None:
     print("Lista se tornou vazia")
 else:
@@ -142,7 +96,7 @@ novo_5 = No(7, novo_3)
 novo_3 = No(9, novo_4, novo_5)
 novo_6 = No(5, None, novo_1)
 novo_fim = No(6, novo_3, novo_6)
-a: No = Arvore.remove_folhas_com_valor(novo_fim, 7)
+a: No = Arvore.removefolhas(novo_fim, 7)
 if a is None:
     print("Lista se tornou vazia")
 else:
@@ -156,7 +110,7 @@ novo_7 = No(7, None, novo_8)
 novo_6 = No(6)
 novo_9 = No(9, novo_6, None)
 novo_in = No(6, novo_9, novo_7)
-a: No = Arvore.remove_folhas_com_valor(novo_in, 7)
+a: No = Arvore.removefolhas(novo_in, 7)
 if a is None:
     print("Lista se tornou vazia")
 else:
