@@ -143,31 +143,62 @@ novo_3 = No(9, novo_4, novo_5)
 novo_6 = No(5, None, novo_1)
 novo_fim = No(6, novo_3, novo_6)
 a: No = Arvore.remove_folhas_com_valor(novo_fim, 7)
-Arvore.pre_ordem(a)
+if a is None:
+    print("Lista se tornou vazia")
+else:
+    Arvore.pre_ordem(a)
+    
+#3
+novo_5 = No(5)
+novo_7 = No(7)
+novo_8 = No(8, novo_5, novo_7)
+novo_7 = No(7, None, novo_8)
+novo_6 = No(6)
+novo_9 = No(9, novo_6, None)
+novo_in = No(6, novo_9, novo_7)
+a: No = Arvore.remove_folhas_com_valor(novo_in, 7)
+if a is None:
+    print("Lista se tornou vazia")
+else:
+    print()
+    Arvore.pre_ordem(a)
 #teste da funcao comparar, funcao c:
+#1
 
+novo_5 = No(5)
+novo_8 = No(8, None, novo_5)
+novo_7 = No(7, novo_8, None)
+novo_6 = No(6)
+novo_9 = No(9, novo_6, None)
+novo_in1 = No(6, novo_9, novo_7)
 
-# novo_1 = No(7)
-# novo_2 = No(5)
-# novo_3 = No(7)
-# novo_4 = No(6)
-# novo_1 = No(8, novo_1, novo_2)
-# novo_5 = No(7, novo_3)
-# novo_3 = No(9, novo_4, novo_5)
-# novo_6 = No(5, None, novo_1)
-# novo_fim = No(6, novo_3, novo_6)
-# novo_1 = No(7)
-# novo_2 = No(5)
-# novo_3 = No(7)
-# novo_4 = No(6)
-# novo_1 = No(8, novo_1, novo_2)
-# novo_5 = No(7, novo_3)
-# novo_3 = No(9, novo_5, novo_4)
-# novo_6 = No(5, None, novo_1)
-# novo_fim2 = No(6, novo_3, novo_6)
-# a = Arvore.verficar(novo_fim, novo_fim2)
-# if a == 0:
-#     print("arvores diferentes")
-# elif a == 1:
-#     print("arvores sao iguais") 
+novo_5 = No(5)
+novo_8 = No(8, None, novo_5)
+novo_7 = No(7, None, novo_8)
+novo_6 = No(6)
+novo_9 = No(9, novo_6, None)
+novo_in2 = No(6, novo_9, novo_7)
+print()
+a = Arvore.verficar(novo_in1, novo_in2)
+if a == 0:
+    print("Falso")
+elif a == 1:
+    print("Verdadeiro")
+novo_5 = No(5)
+novo_8 = No(8, None, novo_5)
+novo_7 = No(7, novo_8, None)
+novo_6 = No(6)
+novo_9 = No(9, novo_6, None)
+novo_in1 = No(6, novo_9, novo_7)
+novo_5 = No(5)
+novo_8 = No(8, None, novo_5)
+novo_7 = No(7, novo_8, None)
+novo_6 = No(6)
+novo_9 = No(9, novo_6, None)
+novo_in2 = No(6, novo_9, novo_7)
+a = Arvore.verficar(novo_in1, novo_in2)
+if a == 0:
+    print("Falso")
+elif a == 1:
+    print("Verdadeiro")
 
