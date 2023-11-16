@@ -1,8 +1,22 @@
 class No:
-        def __init__(self, valor, esquerda=None, direita=None):
-            self.valor = valor
-            self.esquerda = esquerda
-            self.direita = direita
-class Arvore:
-        
-               
+    def __init__(self, freq, letra, esquerda=None, direita=None):
+        self.freq = freq
+        self.letra = letra
+        self.esquerda = esquerda
+        self.direita = direita
+
+
+# class Arvore:
+#     inicio = None
+
+
+vector = list()
+entrada = ['a', 'b', 'a']
+alfabeto = ['a', 'b']
+for letra in alfabeto:
+    num = entrada.count(letra)
+    novo_no = No(num, letra, None, None)
+    vector.append(novo_no)
+
+for i in vector:
+    print(i.freq)
