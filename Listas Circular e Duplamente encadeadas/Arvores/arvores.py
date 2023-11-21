@@ -36,7 +36,7 @@ class Arvore:
                                                  valor)  # faz recursivamente para achar todas as folhas com o valor
             # indicado
             self.direita = Arvore.remove_folhas(self.direita, valor)
-        return self  # se nao tiver nenhuma folha com o valor retorna a própia arvore
+        return self  # se nao tiver nenhuma folha com o valor retorna a propria arvore
 
     # função que calcula o número de folhas em uma árvore
     def qtd_folhas(self: No) -> int:
@@ -56,14 +56,14 @@ class Arvore:
         if self is None and raiz2 is None:  # verifica se chegou no fim da arvore e se ambas sao none
             return 1
         if self is None or raiz2 is None:  # verifica se uma ou outra e none, se 
-            # uma for e a outra nao as arvores estao desbalanceadas
+            # uma for e a outra nao as árvores estao desbalanceadas
             return 0
         else:
             return Arvore.verficar(self.esquerda, raiz2.esquerda) * Arvore.verficar(self.direita,
                                                                                     raiz2.direita)  # Se ambas as recursoes
             # retornarem 1 (indicando que as subárvores à esquerda e à direita são iguais),
-        # a função retorna 1. Se alguma delas forem 0, a fica 0 oq
-        # identifica desigualdade na comparacao das arvores
+        # A função retorna 1. Se alguma delas forem 0, a fica 0 oq
+        # identifica desigualdade na comparacao das árvores
 
 
 # Uso das funções criadas, funcao a
@@ -149,7 +149,7 @@ novo_6 = No(6)
 novo_9 = No(9, novo_6, None)
 novo_in2 = No(6, novo_9, novo_7)
 print()
-a: No = Arvore.verficar(novo_in1, novo_in2)
+a: int = Arvore.verficar(novo_in1, novo_in2)
 if a == 0:
     print("Falso")
 elif a == 1:
@@ -166,7 +166,7 @@ novo_7 = No(7, novo_8, None)
 novo_6 = No(6)
 novo_9 = No(9, novo_6, None)
 novo_in2 = No(6, novo_9, novo_7)
-a: No = Arvore.verficar(novo_in1, novo_in2)
+a: int = Arvore.verficar(novo_in1, novo_in2)
 if a == 0:
     print("Falso")
 elif a == 1:
