@@ -1,10 +1,9 @@
 class No:
-    def __init__(self, freq, letra, esquerda=None, direita=None):
+    def __init__(self, freq, char, esquerda=None, direita=None):
         self.freq = freq
-        self.letra = letra
+        self.char = char
         self.esquerda = esquerda
         self.direita = direita
-
 
 # class Arvore:
 #     inicio = None
