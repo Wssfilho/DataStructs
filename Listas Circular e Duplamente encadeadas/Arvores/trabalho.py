@@ -4,9 +4,11 @@ class No:
         self.char = char
         self.esquerda = esquerda
         self.direita = direita
-
+    #def
 # class Arvore:
 #     inicio = None
+
+
 
 
 vector = list()
