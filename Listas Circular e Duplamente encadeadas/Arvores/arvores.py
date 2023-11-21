@@ -9,7 +9,6 @@ class No:
     """
 
     def __init__(self, valor, esquerda=None, direita=None):
-        self.esquerda = None
         self.valor = valor
         self.esquerda = esquerda
         self.direita = direita
@@ -32,8 +31,8 @@ class Arvore:
             # uma folha (esq e dir sao None) e se é a folha com o valor
             return None  # remove a folha retornando none
         else:
-            self.esquerda = Arvore.remove_folhas(self.esquerda,
-                                                 valor)  # faz recursivamente para achar todas as folhas com o valor
+            self.esquerda = Arvore.remove_folhas(self.esquerda,valor)  # faz recursivamente para achar todas as folhas
+            # com o valor
             # indicado
             self.direita = Arvore.remove_folhas(self.direita, valor)
         return self  # se nao tiver nenhuma folha com o valor retorna a propria arvore
