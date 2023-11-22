@@ -31,7 +31,7 @@ def buscar(raiz, cpf):
 def main():
     raiz = None
     n = int(input())
-    for _ in range(n):
+    for i in range(n):
         operacao = input().split()
         if operacao[0] == 'I':
             cpf = int(operacao[1])
