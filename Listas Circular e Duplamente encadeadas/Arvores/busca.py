@@ -28,20 +28,15 @@ def buscar(raiz, cpf):
     return buscar(raiz.direita, cpf)
 
 
-def main():
-    raiz = None
-    n = int(input())
-    for i in range(n):
-        operacao = input().split()
-        if operacao[0] == 'I':
-            cpf = int(operacao[1])
-            nome = input()
-            raiz = inserir(raiz, cpf, nome)
-        elif operacao[0] == 'B':
-            cpf = int(operacao[1])
-            no = buscar(raiz, cpf)
-            print(f'{no.nome} {no.profundidade}')
-
-
-if __name__ == "__main__":
-    main()
+raiz = None
+n = int(input())
+for i in range(n):
+    operacao = input().split()
+    if operacao[0] == 'I':
+        cpf = int(operacao[1])
+        nome = input()
+        raiz = inserir(raiz, cpf, nome)
+    elif operacao[0] == 'B':
+        cpf = int(operacao[1])
+        no = buscar(raiz, cpf)
+        print(f'{no.nome} {no.profundidade}')
