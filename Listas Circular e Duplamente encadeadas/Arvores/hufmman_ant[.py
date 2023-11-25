@@ -6,6 +6,7 @@ class No:
         self.esquerda = None
         self.direita = None
 
+
 # Função principal para a codificação de Huffman
 def huff(texto: str):
     # Criando um dicionário para armazenar a frequência de cada caractere
@@ -62,6 +63,7 @@ def huff(texto: str):
 
     # Retornando a árvore de Huffman, o dicionário dicionario_codigo e o texto codificado
     return arvore_huffman, dicionario_codigo, texto_codificado
+
 
 # Solicitando ao usuário que insira o texto a ser codificado
 texto = input("Digite o texto aqui: ")
