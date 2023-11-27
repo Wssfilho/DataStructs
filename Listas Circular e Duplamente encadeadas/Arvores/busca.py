@@ -35,7 +35,7 @@ def buscar(raiz, cpf):
 raiz = None
 n = int(input())  # Lendo o número de operações
 for i in range(n):
-    operacao = input().split()  # Lendo a operação
+    operacao = input().split()  # Lendo a operação, e fazendo split para separar os caracteres
     if operacao[0] == 'I':  # Se a operação for de inserção
         cpf = int(operacao[1])  # Lendo o CPF
         nome = input()  # Lendo o nome
