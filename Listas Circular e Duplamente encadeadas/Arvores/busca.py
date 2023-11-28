@@ -11,7 +11,7 @@ class No:
 # Função para inserir um novo nó na árvore
 def inserir(raiz, cpf, nome):
     if raiz is None:  # Se a árvore estiver vazia, cria um novo nó
-        return No(cpf, nome)
+        return No(cpf, nome) #retorna esse nó
     else:
         if cpf < raiz.cpf:  # Se o CPF for menor, insere à esquerda
             raiz.esquerda = inserir(raiz.esquerda, cpf, nome)
@@ -26,9 +26,9 @@ def inserir(raiz, cpf, nome):
 def buscar(raiz, cpf):
     if raiz is None or raiz.cpf == cpf:  # Se a árvore estiver vazia ou o CPF for encontrado, retorna o nó
         return raiz
-    if cpf < raiz.cpf:  # Se o CPF for menor, busca à esquerda
+    if cpf < raiz.cpf:  # Se o CPF for menor, busca a esquerda
         return buscar(raiz.esquerda, cpf)
-    return buscar(raiz.direita, cpf)  # Se o CPF for maior, busca à direita
+    return buscar(raiz.direita, cpf)  # Se o CPF for maior, busca a direita
 
 
 # Inicializando a árvore

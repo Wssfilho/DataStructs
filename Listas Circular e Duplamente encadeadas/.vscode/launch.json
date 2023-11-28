@@ -7,9 +7,9 @@
       "request": "launch",
       "args": [],
       "stopAtEntry": false,
-      "externalConsole": false,
-      "cwd": "/home/wilsonpc/Documentos/Estrutura-de-Dados/Listas Encadeadas",
-      "program": "/home/wilsonpc/Documentos/Estrutura-de-Dados/Listas Encadeadas/build/Debug/outDebug",
+      "externalConsole": true,
+      "cwd": "c:/Users/wilso/OneDrive/Documentos/GitHub/Estrutura-de-Dados/Listas Circular e Duplamente encadeadas",
+      "program": "c:/Users/wilso/OneDrive/Documentos/GitHub/Estrutura-de-Dados/Listas Circular e Duplamente encadeadas/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
