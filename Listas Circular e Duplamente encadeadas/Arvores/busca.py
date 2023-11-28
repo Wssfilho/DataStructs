@@ -7,7 +7,6 @@ class No:
         self.direita = None  # Nó filho à direita
         self.profundidade = 1  # Profundidade do nó na árvore
 
-
 # Função para inserir um novo nó na árvore
 def inserir(raiz, cpf, nome):
     if raiz is None:  # Se a árvore estiver vazia, cria um novo nó
