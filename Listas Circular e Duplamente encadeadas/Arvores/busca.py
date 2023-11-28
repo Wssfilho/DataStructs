@@ -1,11 +1,11 @@
 # Definindo a classe No
 class No:
     def __init__(self, cpf, nome):
-        self.cpf = cpf  # CPF do nó
-        self.nome = nome  # Nome do nó
-        self.esquerda = None  # Nó filho à esquerda
-        self.direita = None  # Nó filho à direita
         self.prof = 1  # Profundidade do nó na árvore
+        self.cpf = cpf 
+        self.nome = nome
+        self.direita = None  # Nó filho a direita 
+        self.esquerda = None  # Nó filho a esquerda
 
 
 # Função para inserir um novo nó na árvore
