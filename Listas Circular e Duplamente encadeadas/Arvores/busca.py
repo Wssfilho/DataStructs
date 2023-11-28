@@ -5,7 +5,7 @@ class No:
         self.nome = nome  # Nome do nó
         self.esquerda = None  # Nó filho à esquerda
         self.direita = None  # Nó filho à direita
-        self.profundidade = 1  # Profundidade do nó na árvore
+        self.prof = 1  # Profundidade do nó na árvore
 
 
 # Função para inserir um novo nó na árvore
@@ -15,10 +15,10 @@ def inserir(raiz, cpf, nome):
     else:
         if cpf < raiz.cpf:  # Se o CPF for menor, insere a esquerda
             raiz.esquerda = inserir(raiz.esquerda, cpf, nome)
-            raiz.esquerda.profundidade = raiz.profundidade + 1  # Atualiza a profundidade
+            raiz.esquerda.prof = raiz.prof + 1  # Atualiza a profundidade
         else:  # Se o CPF for maior, insere a direita
             raiz.direita = inserir(raiz.direita, cpf, nome)
-            raiz.direita.profundidade = raiz.profundidade + 1  # Atualiza a profundidade
+            raiz.direita.prof = raiz.prof + 1  # Atualiza a profundidade
         return raiz  # Retorna a raiz da árvore
 
 
@@ -43,4 +43,4 @@ for i in range(n):
     elif operacao[0] == 'B':  # Se a operação for de busca
         cpf = int(operacao[1])  # Lendo o CPF
         no = buscar(raiz, cpf)  # Buscando o nó na árvore
-        print(f'{no.nome} {no.profundidade}')  # Imprimindo o nome e a profundidade do nó
+        print(f'{no.nome} {no.prof}')  # Imprimindo o nome e a profundidade do nó
