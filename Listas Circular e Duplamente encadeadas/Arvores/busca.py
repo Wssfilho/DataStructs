@@ -12,10 +12,10 @@ def inserir(raiz, cpf, nome):
     if raiz is None:  # Se a árvore estiver vazia, cria um novo nó
         return No(cpf, nome) #retorna esse nó
     else:
-        if cpf < raiz.cpf:  # Se o CPF for menor, insere à esquerda
+        if cpf < raiz.cpf:  # Se o CPF for menor, insere a esquerda
             raiz.esquerda = inserir(raiz.esquerda, cpf, nome)
             raiz.esquerda.profundidade = raiz.profundidade + 1  # Atualiza a profundidade
-        else:  # Se o CPF for maior, insere à direita
+        else:  # Se o CPF for maior, insere a direita
             raiz.direita = inserir(raiz.direita, cpf, nome)
             raiz.direita.profundidade = raiz.profundidade + 1  # Atualiza a profundidade
         return raiz  # Retorna a raiz da árvore
