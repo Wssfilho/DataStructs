@@ -21,7 +21,19 @@ class No:
             return self.pai
         else: 
             return self.pai.ancestral_esq(self.pai)
-        
+    # Função para inserir um novo nó na árvore
+    def inserir(raiz, cpf, nome):
+        if raiz is None:  # Se a árvore estiver vazia, cria um novo nó
+            return No(cpf, nome)  # retorna esse nó
+        else:
+            if cpf < raiz.cpf:  # Se o CPF for menor, insere a esquerda
+                raiz.esquerda = No.inserir(raiz.esquerda, cpf, nome)
+                raiz.esquerda.prof = raiz.prof + 1  # Atualiza a profundidade
+            else:  # Se o CPF for maior, insere a direita
+                raiz.direita = No.inserir(raiz.direita, cpf, nome)
+                raiz.direita.prof = raiz.prof + 1  # Atualiza a profundidade
+            return raiz  # Retorna a raiz da árvore
+
 # Criando alguns nós
 no1 = No(1, None, None, None)
 no3 = No(3, None, None, None)
