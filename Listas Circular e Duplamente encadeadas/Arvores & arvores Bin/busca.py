@@ -30,7 +30,6 @@ def buscar(raiz, cpf):
         return buscar(raiz.esquerda, cpf)
     return buscar(raiz.direita, cpf)  # Se o CPF for maior, busca a direita
 
-
 # Inicializando a árvore
 raiz = None
 n = int(input())  # Lendo o número de operações
@@ -44,3 +43,4 @@ for i in range(n):
         cpf = int(operacao[1])  # Lendo o CPF
         no = buscar(raiz, cpf)  # Buscando o nó na árvore
         print(f'{no.nome} {no.prof}')  # Imprimindo o nome e a profundidade do nó
+
