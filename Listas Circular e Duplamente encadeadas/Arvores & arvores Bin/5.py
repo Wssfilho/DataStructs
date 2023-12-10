@@ -38,6 +38,21 @@ class Arvorebusc:
 
             # Finalmente, recursão na subárvore esquerda
             Arvorebusc.imprimir_inverso(raiz.esquerda)
+    def imprimir_intervalo(raiz, min_val, max_val):
+        if raiz:
+            # Primeiro recursão na subárvore esquerda
+            if min_val < raiz.valor:
+                Arvorebusc.imprimir_intervalo(raiz.esquerda, min_val, max_val)
+
+            # Em seguida, imprime o valor do nó se estiver no intervalo
+            if min_val <= raiz.valor and raiz.valor <= max_val:
+                print(raiz.valor, end= ' ')
+
+            # Finalmente, recursão na subárvore direita
+            if max_val > raiz.valor:
+                Arvorebusc.imprimir_intervalo(raiz.direita, min_val, max_val)
+            
+            
             
 
 # Inicializando a árvore
@@ -49,3 +64,6 @@ novoinsere = Arvorebusc.inserir(novoinsere, 1)
 no = Arvorebusc.buscar(novoinsere, 4)  # Buscando o nó na árvore
 print("profundidade: " f'{no.valor} {no.prof}')  # Imprimindo o nome e a profundidade do nó
 Arvorebusc.imprimir_inverso(novoinsere)
+print()
+Arvorebusc.imprimir_intervalo(novoinsere, 1, 3)
+
