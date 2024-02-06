@@ -13,7 +13,7 @@ int vazia(Pno);
 Pno criarElemento(int);
 void Soma(Pno, Pno, int);
 
-int main()
+int main(void)
 {
     int numero, elem;
     Pno lista1 = NULL, lista2 = NULL, novo;
