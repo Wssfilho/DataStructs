@@ -8,7 +8,7 @@ def criar_outra_janela():
     texto2 = Label(janela2, text="ola")
     texto2.grid(column=0, row=0, padx=0, pady=0)
     janela.destroy()
-
+    entrada =
     chamararq = Button(janela2, text="chamar outra janela", command=None)
     chamararq.grid(column=1, row=1, padx=70, pady=50)
     janela2.mainloop()
