@@ -67,7 +67,6 @@ void push(Stack *ps, int x)
         printf("ERRO- PILHA CHEIA");
         exit(1);
     }
-
     ps->top++;
     ps->items[ps->top] = x;
 }
