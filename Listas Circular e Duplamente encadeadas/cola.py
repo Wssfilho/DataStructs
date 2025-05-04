@@ -12,4 +12,10 @@ nome = input("insira o nome")
 idade = input("insira a idade")
 pessoa = pessoa(nome, idade)
 pessoa.mostrar()
-        
+for i in range(100000):
+    nome = input("insira o nome")
+    idade = input("insira a idade")
+    pessoa = pessoa(nome, idade)
+    pessoa.mostrar()
+    if i == 99999:
+        break
