@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #define n 10
@@ -39,8 +38,6 @@ Pno criarElemento(int valor) // char valor
     novo->prox = NULL;   // ELE APONTA PARA O NULLO ESTANDO PREPARADO PARA ALOCAR OUTRO ESPACO
     return novo;         // RETORNA UM PONTEIRO PARA A NOVA ESTRUTUA QUE FOI ALOCADA
 }
-
-
 
 void insereFim(Pno *inicio, Pno *novo)
 {
@@ -86,5 +83,4 @@ int main(void)
     insereFim(&inicio2, &novo);
     cocatenar(&inicio, &inicio2);
     imprimir(inicio);
-   
 }

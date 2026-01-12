@@ -52,7 +52,7 @@ void inserirIn(Pno *inicio, Pno *novo)
 }
 void removerIn(Pno *inicio)
 {
-    if (!vazia(*inicio)) //SE NAO TIVER VAZIO O ALVO APONTA PARA O INCIO, O INCICIO GUARDA O ALVO, ENTAO ELE LIBERA A POSICAO
+    if (!vazia(*inicio)) // SE NAO TIVER VAZIO O ALVO APONTA PARA O INCIO, O INCICIO GUARDA O ALVO, ENTAO ELE LIBERA A POSICAO
     {
         Pno alvo = *inicio;
         *inicio = alvo->prox;

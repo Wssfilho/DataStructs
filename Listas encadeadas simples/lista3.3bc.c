@@ -10,18 +10,18 @@ int main(void)
     int i = 0;
     Pno inicio = NULL;
     Pno novo, aux;
-    for (int i = 0; i < 20; i+=2)
+    for (int i = 0; i < 20; i += 2)
     {
         novo = criarElemento(i);
         insereFim(&inicio, &novo);
     }
     aux = inicio;
     imprimir(inicio);
-    while(aux != NULL)
+    while (aux != NULL)
     {
         i++;
-        soma+=aux->valor;
+        soma += aux->valor;
         aux = aux->prox;
     }
-    printf("\n\ntamanho: %d, soma: %d", i,soma);
+    printf("\n\ntamanho: %d, soma: %d", i, soma);
 }
